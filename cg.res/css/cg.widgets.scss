@@ -1,0 +1,375 @@
+$primary-color: #eaab23;
+$gray-ultra-light: #efefef;
+
+.cg-widgets_styles-orange{
+    font-family: Calibri;
+    .CardView_icon {
+        position: relative;
+        width: 400px;
+        height: 210px;
+        padding: 5px 0;
+        box-sizing: border-box;
+        .CardView_icon_content{
+            position: relative;
+            width: 100%;
+            height: 200px;
+            border: solid 1px $gray-ultra-light;
+            .CardView_icon-w_description{
+                width: calc(100% - 200px);
+                background: rgb(240, 240, 240);
+                float: left;
+                height: 200px;
+                overflow: hidden;
+                position: relative;
+                .CardView_icon-w_title{
+                  width: 100%;
+                  .CardView_icon-title{
+                    width: 100%;
+                    display: block;
+                    padding: 20px 0 0 10px;
+                    box-sizing: border-box;
+                    position: relative;
+                    font-size: 20px;
+                    &::before{
+                      line-height: normal;
+                      display: block;
+                      float: left;
+                      padding-right: 10px;
+                      margin-top: 2px;
+                    }
+                    &::after{
+                      display: block;
+                      content: " ";
+                      background: $primary-color;
+                      height: 1px;
+                      position: absolute;
+                      width: 100%;
+                      left: 10px;
+                      bottom: 0px;
+                    }
+                  }
+                  .CardView_icon-subtitle{
+                    padding: 0 0 0 10px;
+                    box-sizing: border-box;
+                    display: block;
+                    font-weight: lighter;
+                  }
+                }
+                .CardView_icon-description{
+                  padding: 10px 10px 0;
+                  box-sizing: border-box;
+                  font-size: 14px;
+                }
+                .CardView_icon-link_1{
+                  background: $primary-color;
+                  position: absolute;
+                  display: block;
+                  width: calc(100% - 10px);
+                  height: 40px;
+                  bottom: 10px;
+                  right: 0;
+                  .CardView_icon-_link_1_icon{
+                    display: block;
+                    float: right;
+                    &::before{
+                      display: block;
+                      height: 40px;
+                      width: 40px;
+                      text-align: center;
+                      line-height: 40px;
+                      color: white;
+                      font-size: 24px;
+                    }
+                  }
+                  .CardView_icon-link_1_title{
+                    display: block;
+                    padding-left: 10px;
+                    box-sizing: border-box;
+                    width: calc(100% - 40px);
+                    line-height: 40px;
+                    float: left;
+                    color: white;
+                  }
+                }
+            }
+            .CardView_icon-w_illustration{
+                background: white;
+                float: right;
+                width: 200px;
+                height: 200px;
+                text-decoration: none;
+                .CardView_icon-icon{
+                  display: block;
+                  width: 100%;
+                  height: 100%;
+                  &:hover{
+                    &::before{
+                    transform: scale(1.1,1.1);
+                    text-shadow: 25px 25px 0px rgba(0, 0, 0, 0.1);
+                    }
+                  }
+                  &::before{
+                    transition: all .2s linear;
+                    display: block;
+                    line-height: 200px;
+                    text-align: center;
+                    font-size: 120px;
+                    color: $primary-color;
+                    text-shadow: 10px 10px 0px rgba(0, 0, 0, 0.1);
+                  }
+                }
+            }
+        }
+    }
+    .CardView_icon__shadow{
+      .CardView_icon_content{
+        box-shadow: 0 2px 10px 0px rgba(0, 0, 0, 0.2);
+        border: 0;
+      }
+    }
+    .Label_icon{
+      height: 62px;
+      width: 100%;
+      padding: 1px 0;
+      box-sizing: border-box;
+      position: relative;
+      .Label_icon_content{
+        border: solid 1px #efefef;
+        width: 100%;
+        height: 60px;
+        position: relative;
+        .Label_icon-banda{
+          position: absolute;
+          top: 8.333px;
+          left: 7px;
+          width: 6px;
+          height: 6px;
+          background: $primary-color;
+          border-radius: 50%;
+          &:before{
+            position: absolute;
+            top: 16.666px;
+            left: 0px;
+            display: block;
+            content: " ";
+            width: 6px;
+            height: 6px;
+            background: $primary-color;
+            border-radius: 50%;
+          }
+          &:after{
+            position: absolute;
+            top: 33.333px;
+            left: 0px;
+            display: block;
+            content: " ";
+            width: 6px;
+            height: 6px;
+            background: $primary-color;
+            border-radius: 50%;
+          }
+        }
+        .Label_icon-icon{
+          position: relative;
+          float: left;
+          margin: 5px 0 5px 20px;
+          width: 50px;
+          height: 50px;
+          display: block;
+          border-left: 1px solid $gray-ultra-light;
+          &::before{
+            font-size: 30px;
+            width: 50px;
+            text-align: center;
+            color: #e6e6e6;
+            line-height: 50px;
+          }
+        }
+        .Label_icon-w_description{
+          width: calc(100% - 72px);
+          float: right;
+          height: 60px;
+          .Label_icon-title{
+            display: block;
+            padding: 5px 0 0 0;
+            height: 20px;
+            font-weight: bold;
+            }
+          .Label_icon-description{
+            display: block;
+            padding: 0 0 5px 0;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    .Label_icon__shadow{
+      .Label_icon_content{
+        box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2);
+        border: 0;
+      }
+    }
+    .ListILink{
+      width: 100%;
+      position: relative;
+      transition: 0.2s linear all;
+      .ListILink_content{
+        padding-bottom: 10px;
+      }
+      .ListILink-header{
+        height: 46px;
+        display: block;
+        overflow: hidden;
+        .ListILink-icon{
+          float: left;
+          height: 48px;
+          width: 58px;
+          position: relative;
+          color: transparent;
+          transition: .2s linear all;
+          margin-left: -40px;
+          &::before{
+            display: block;
+            width: 40px;
+            height: 100%;
+            line-height: 48px;
+            font-size: 22px;
+            padding-left: 18px;
+          }
+        }
+        .ListILink-title{
+          height: 46px;
+          line-height: 46px;
+          text-transform: uppercase;
+          font-size: 18px;
+        }
+        .ListILink-toggle_show{
+          float: right;
+          display: block;
+          height: 46px;
+          width: 30px;
+          position: relative;
+          color: gray;
+          transition: .2s linear all;
+          border: 0;
+          background: transparent;
+          padding: 0;
+          outline: none;
+          cursor: pointer;
+          &::before{
+            display: block;
+            width: 100%;
+            height: 100%;
+            line-height: 46px;
+            font-size: 22px;
+          }
+          &:hover{
+            color: $primary-color;
+          }
+        }
+      }
+      .ListILink-item{
+        display: block;
+        height: 40px;
+        position: relative;
+        text-decoration: none;
+        color: black;
+        width: 100%;
+        overflow: hidden;
+        .ListILink-item-icon{
+          float: left;
+          height: 40px;
+          width: 58px;
+          position: relative;
+          color: gray;
+          transition: .2s linear all;
+          z-index: 2;
+          &::before{
+            display: block;
+            width: 40px;
+            height: 100%;
+            line-height: 40px;
+            font-size: 22px;
+            padding-left: 18px;
+          }
+        }
+        .ListILink-item-title{
+          height: 40px;
+          line-height: 40px;
+          text-transform: capitalize;
+          font-weight: lighter;
+          font-size: 18px;
+          display: block;
+          z-index: 1;
+          position: absolute;
+          left: 58px;
+          overflow: hidden;
+          transition: .2s linear all;
+        }
+        &:hover{
+          .ListILink-item-icon  {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+    .ListILink__hidden{
+      .ListILink_content{
+        padding-bottom: 0;
+      }
+      .ListILink-header{
+        .ListILink-icon{
+          margin-left: 0;
+          color: gray;
+        }
+      }
+      &:hover{
+        .ListILink-header{
+          .ListILink-icon{
+            color: $primary-color;
+          }
+        }
+      }
+    }
+    .ListILink__hiddenHeader{
+      .ListILink-header{
+        display: none;
+      }
+      .ListILink_content{
+        padding-bottom: 0;
+      }
+      .ListILink-item{
+        height: 46px;
+        .ListILink-item-icon{
+          height: 46px;
+          &::before{
+            width: 46px;
+            line-height: 46px;
+          }
+        }
+        .ListILink-item-title{
+          height: 46px;
+          line-height: 46px;
+          text-transform: uppercase;
+          font-weight: normal;
+        }
+      }
+    }
+    .ListILink__iconMode{
+      width: 58px;
+      .ListILink-header{
+        .ListILink-icon{
+          cursor: pointer;
+          margin: 0;
+          color: #cbcbcb;
+        }
+        .ListILink-title{
+          display: none;
+        }
+        .ListILink-toggle_show{
+          display: none;
+        }
+      }
+    }
+
+}
