@@ -301,6 +301,14 @@ class CgDom{
   public $acutab = "  ";
   private $isRender = false;
   function __construct($setDom){
+    $pArray = null;
+    if (is_array($setDom)) {
+      foreach ($setDom as $k => $val) {
+        $pArray = $val;
+        $setDom = $k;
+        break;
+      }
+    }
     $info = $this->extractinfo($setDom);
 
     if (strlen($info["var"]) > 0) $GLOBALS["_cgVars"][$info["var"]] = &$this;
@@ -321,8 +329,10 @@ class CgDom{
       }
     }
     if(strlen($info['text']) > 0) $this->append($info['text']);
+    if (!is_null($pArray)) $this->append($pArray);
 
   }
+
   function remove($item){
     if (CgDom::isCgDom($item)) {
       $pos = array_search($item,$this->childrens,true);
@@ -379,6 +389,13 @@ class CgDom{
     $class = implode(" ",array_diff($selfKeys, $claves));
     $this->attr("class",$class);
     return $this;
+  }
+  function replaceClass($old,$new){
+    $this->removeClass($old)->addClass($new);
+    return $this;
+  }
+  function toggleClass($set,$flag){
+    if ($flag) $this->addClass($set); else $this->removeClass($set); return $this;
   }
   function attr($attr,$val = null){
     if(!is_null($val)){

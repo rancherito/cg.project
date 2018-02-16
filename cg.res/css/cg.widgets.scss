@@ -1,19 +1,31 @@
 $primary-color: #eaab23;
-$gray-ultra-light: #efefef;
+$ultra-light-color: #efefef;
+
+[cg_border="border"]{
+  border: 1px solid $ultra-light-color;
+}
+[cg_border="shadow-s"]{
+  box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2);
+}
+[cg_border="shadow"]{
+  box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.2)
+}
+[cg_border="no-border"]{
+  box-shadow: none;
+  border: 0;
+}
 
 .cg-widgets_styles-orange{
     font-family: Calibri;
     .CardView_icon {
         position: relative;
         width: 400px;
-        height: 210px;
-        padding: 5px 0;
+        height: 200px;
         box-sizing: border-box;
         .CardView_icon_content{
             position: relative;
             width: 100%;
             height: 200px;
-            border: solid 1px $gray-ultra-light;
             .CardView_icon-w_description{
                 width: calc(100% - 200px);
                 background: rgb(240, 240, 240);
@@ -121,12 +133,6 @@ $gray-ultra-light: #efefef;
             }
         }
     }
-    .CardView_icon__shadow{
-      .CardView_icon_content{
-        box-shadow: 0 2px 10px 0px rgba(0, 0, 0, 0.2);
-        border: 0;
-      }
-    }
     .Label_icon{
       height: 62px;
       width: 100%;
@@ -134,7 +140,6 @@ $gray-ultra-light: #efefef;
       box-sizing: border-box;
       position: relative;
       .Label_icon_content{
-        border: solid 1px #efefef;
         width: 100%;
         height: 60px;
         position: relative;
@@ -176,7 +181,7 @@ $gray-ultra-light: #efefef;
           width: 50px;
           height: 50px;
           display: block;
-          border-left: 1px solid $gray-ultra-light;
+          border-left: 1px solid $ultra-light-color;
           &::before{
             font-size: 30px;
             width: 50px;
@@ -201,12 +206,6 @@ $gray-ultra-light: #efefef;
             font-size: 14px;
           }
         }
-      }
-    }
-    .Label_icon__shadow{
-      .Label_icon_content{
-        box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2);
-        border: 0;
       }
     }
     .ListILink{
@@ -368,6 +367,108 @@ $gray-ultra-light: #efefef;
         }
         .ListILink-toggle_show{
           display: none;
+        }
+      }
+    }
+    .SimpleIListLink{
+      position: relative;
+      .SimpleIListLink_content{
+        position: relative;
+        background: white;
+      }
+      .SimpleIListLink-header{
+        display: block;
+        height: 50px;
+        background: $ultra-light-color;
+        .SimpleIListLink-icon{
+          display: block;
+          float: left;
+          height: 100%;
+          width: 50px;
+          font-size: 22px;
+          &::before{
+            width: 100%;
+            height: 100%;
+            display: block;
+            text-align: center;
+            line-height: 50px;
+          }
+        }
+        .SimpleIListLink-title{
+          line-height: 50px;
+          font-size: 18px;
+          text-transform: uppercase;
+        }
+      }
+      .SimpleIListLink-item{
+        display: block;
+        height: 40px;
+        text-decoration: none;
+        color: black;
+        .SimpleIListLink-item-icon{
+          display: block;
+          float: left;
+          height: 100%;
+          width: 50px;
+          font-size: 14px;
+          &::before{
+            width: 100%;
+            height: 100%;
+            display: block;
+            text-align: center;
+            line-height: 40px;
+          }
+        }
+        .SimpleIListLink-item-title{
+          line-height: 40px;
+          font-size: 18px;
+          text-transform: capitalize;
+          font-weight: lighter;
+
+        }
+      }
+    }
+    .SimpleButton{
+      display: inline-block;
+      height: 40px;
+      padding: 0 20px;
+      text-decoration: none;
+      position: relative;
+      text-align: center;
+      color: black;
+      transition: .2s linear all;
+      overflow: hidden;
+      &::before{
+        content: " ";
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: $primary-color;
+        transition: .2s linear all;
+      }
+      &:hover{
+        color: white;
+        &::before{
+          top: 0;
+        }
+      }
+      .SimpleButton-title{
+        line-height: 40px;
+        display: inline-block;
+        position: relative;
+      }
+      .SimpleButton-icon{
+        float: right;
+        height: 40px;
+        font-size: 18px;
+        padding: 0 0 0 10px;
+        position: relative;
+        &::before{
+          display: block;
+          line-height: 40px;
         }
       }
     }
