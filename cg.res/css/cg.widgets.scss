@@ -370,17 +370,17 @@ $ultra-light-color: #efefef;
         }
       }
     }
-    .SimpleIListLink{
+    .SimpleList{
       position: relative;
-      .SimpleIListLink_content{
+      .SimpleList_content{
         position: relative;
         background: white;
       }
-      .SimpleIListLink-header{
+      .SimpleList-header{
         display: block;
         height: 50px;
         background: $ultra-light-color;
-        .SimpleIListLink-icon{
+        .SimpleList-icon{
           display: block;
           float: left;
           height: 100%;
@@ -394,18 +394,18 @@ $ultra-light-color: #efefef;
             line-height: 50px;
           }
         }
-        .SimpleIListLink-title{
+        .SimpleList-title{
           line-height: 50px;
           font-size: 18px;
           text-transform: uppercase;
         }
       }
-      .SimpleIListLink-item{
+      .SimpleList-item{
         display: block;
         height: 40px;
         text-decoration: none;
         color: black;
-        .SimpleIListLink-item-icon{
+        .SimpleList-item-icon{
           display: block;
           float: left;
           height: 100%;
@@ -419,7 +419,7 @@ $ultra-light-color: #efefef;
             line-height: 40px;
           }
         }
-        .SimpleIListLink-item-title{
+        .SimpleList-item-title{
           line-height: 40px;
           font-size: 18px;
           text-transform: capitalize;

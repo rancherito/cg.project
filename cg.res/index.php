@@ -48,14 +48,14 @@ for ($i=0; $i < 4; $i++) {
   $wrap->append($lists[$i]);
 }
 
-$la = cg_widgets::simpleIListLink()->datasource($datalist);
+$la = CgSimpleList::create()->datasource($datalist);
 $wrap->append(['div(style="clear: both;")']);
 $wrap->append($la);
 
 $listButtons = [];
 
 for ($i=0; $i < 3; $i++) {
-  $listButtons[$i] = cg_widgets::simpleButton()->title("Button #".($i + 1))->link('index.php')->icon('ion-ios-folder-outline');
+  $listButtons[$i] = CgSimpleButton::create()->title("Button #".($i + 1))->link('index.php')->icon('ion-ios-folder-outline');
   $wrap->append(['div(style="clear: both;")']);
   $wrap->append($listButtons[$i]);
 }

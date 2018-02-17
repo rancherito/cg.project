@@ -278,29 +278,27 @@ class Cg_ListILink extends __cg_base_list
     return $this;
   }
 }
-class Cg_SimpleIListLink extends __cg_base_wrap
-{
+class CgSimpleList extends __cg_base_wrap {
   private $listItems = [];
   private $wrap_childs;
   private $title;
   private $icon;
   private $_iconClass = "ion-ios-circle-filled";
 
-  function __construct()
-  {
+  function __construct() {
     parent::__construct();
-    $this->body->addClass('SimpleIListLink_content')->append([
-      'a.SimpleIListLink-header'=>[
-        'i#[icon].SimpleIListLink-icon',
-        'span#[title].SimpleIListLink-title Title list'
+    $this->body->addClass('SimpleList_content')->append([
+      'a.SimpleList-header'=>[
+        'i#[icon].SimpleList-icon',
+        'span#[title].SimpleList-title Title list'
       ],
-      'div#[body].SimpleIListLink-body'
+      'div#[body].SimpleList-body'
     ]);
 
     $this->wrap_childs = cg::v('body');
     $this->title = cg::v('title');
     $this->icon = cg::v('icon');
-    $this->icon($this->_iconClass)->addClass('SimpleIListLink');;
+    $this->icon($this->_iconClass)->addClass('SimpleList');;
   }
   function addItem($items) {
 
@@ -312,12 +310,13 @@ class Cg_SimpleIListLink extends __cg_base_wrap
   }
   static function item() {
     $item = new __cg_base_link();
-    $item->addClass('SimpleIListLink-item');
-    $item->title->addClass('SimpleIListLink-item-title');
-    $item->icon->addClass('SimpleIListLink-item-icon');
+    $item->addClass('SimpleList-item');
+    $item->title->addClass('SimpleList-item-title');
+    $item->icon->addClass('SimpleList-item-icon');
     $item->icon('ion-ios-circle-outline');
     return $item;
   }
+  static function create() { return new CgSimpleList();}
   function icon($set) {
       $this->icon->replaceClass($this->_iconClass,$set)->attr('cg_icon',$set); $this->_iconClass = $set;
       return $this;
@@ -337,14 +336,15 @@ class Cg_SimpleIListLink extends __cg_base_wrap
     return $this;
   }
 }
-
-class Cg_SimpleButton extends __cg_base_link {
-
+class CgSimpleButton extends __cg_base_link {
   function __construct() {
     parent::__construct();
     $this->addClass('SimpleButton')->border('shadow-s');
     $this->icon->addClass('SimpleButton-icon');
     $this->title->addClass('SimpleButton-title');
+  }
+  static function create(){
+    return new CgSimpleButton();
   }
 }
 
@@ -353,8 +353,6 @@ class cg_widgets{
     static function label_icon(){ return new cg_Label_icon(); }
     static function iList_icon(){ return new Cg_IList_icon(); }
     static function listILink(){ return new Cg_ListILink(); }
-    static function simpleIListLink() { return new Cg_SimpleIListLink(); }
-    static function simpleButton() { return new Cg_SimpleButton(); }
 }
 
 
