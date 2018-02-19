@@ -335,6 +335,9 @@ class CgSimpleList extends __cg_base_wrap {
     }
     return $this;
   }
+  function title($set) {
+    $this->title->text($set); return $this;
+  }
 }
 class CgSimpleButton extends __cg_base_link {
   function __construct() {

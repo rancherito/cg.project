@@ -6,8 +6,8 @@
   box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2); }
 
 [cg_border="shadow"] {
-  -webkit-box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.2); }
+  -webkit-box-shadow: 0 2px 6px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 6px 0px rgba(0, 0, 0, 0.2); }
 
 [cg_border="no-border"] {
   -webkit-box-shadow: none;
@@ -320,14 +320,25 @@
     .cg-widgets_styles-orange .ListILink__iconMode .ListILink-header .ListILink-toggle_show {
       display: none; }
   .cg-widgets_styles-orange .SimpleList {
-    position: relative; }
+    position: relative;
+    background: white; }
     .cg-widgets_styles-orange .SimpleList .SimpleList_content {
-      position: relative;
-      background: white; }
+      position: relative; }
     .cg-widgets_styles-orange .SimpleList .SimpleList-header {
       display: block;
       height: 50px;
-      background: #efefef; }
+      text-align: left;
+      position: relative;
+      overflow: hidden; }
+      .cg-widgets_styles-orange .SimpleList .SimpleList-header::after {
+        content: "";
+        display: block;
+        width: calc(100% - 50px);
+        height: 1px;
+        background: #eaab23;
+        position: absolute;
+        bottom: 1;
+        right: 0; }
       .cg-widgets_styles-orange .SimpleList .SimpleList-header .SimpleList-icon {
         display: block;
         float: left;
@@ -344,11 +355,22 @@
         line-height: 50px;
         font-size: 18px;
         text-transform: uppercase; }
+    .cg-widgets_styles-orange .SimpleList .SimpleList-body {
+      padding: 20px 0; }
     .cg-widgets_styles-orange .SimpleList .SimpleList-item {
       display: block;
       height: 40px;
       text-decoration: none;
-      color: black; }
+      color: #3c3c3c;
+      text-align: left;
+      position: relative;
+      -webkit-transition: .2s linear all;
+      -o-transition: .2s linear all;
+      transition: .2s linear all; }
+      .cg-widgets_styles-orange .SimpleList .SimpleList-item:link {
+        color: #936500; }
+        .cg-widgets_styles-orange .SimpleList .SimpleList-item:link:hover {
+          background: #efefef; }
       .cg-widgets_styles-orange .SimpleList .SimpleList-item .SimpleList-item-icon {
         display: block;
         float: left;
@@ -362,10 +384,16 @@
           text-align: center;
           line-height: 40px; }
       .cg-widgets_styles-orange .SimpleList .SimpleList-item .SimpleList-item-title {
+        overflow: hidden;
         line-height: 40px;
         font-size: 18px;
-        text-transform: capitalize;
-        font-weight: lighter; }
+        font-weight: lighter;
+        display: inline-block;
+        height: 40px;
+        width: calc(100% - 51px);
+        white-space: nowrap;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis; }
   .cg-widgets_styles-orange .SimpleButton {
     display: inline-block;
     height: 40px;
