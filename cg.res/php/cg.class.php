@@ -1,7 +1,10 @@
 <?php
+
+namespace cg;
+
 $GLOBALS["_cgVars"] = [];
 
-class CgFormValidator{
+class FormValidator{
   private $items = ["value" => [], "validator" => [], "name" => []];
   private $allvalid = false;
   private $form = NULL;
@@ -12,7 +15,7 @@ class CgFormValidator{
     return $this->allvalid;
   }
   function __construct(&$form,$nameForm){
-    if (CgDom::isCgDom($form)){
+    if (Dom::isDom($form)){
       if (strtolower($form->typeDom) === 'form') {
         $this->isForm = true;
         $this->form = $form;
@@ -45,7 +48,7 @@ class CgFormValidator{
           if (in_array($name_inp,$this->items["value"])) {
             $post_val = array_search($name_inp,$this->items["value"]);
             $eval = isset($r_vars[$name_inp]) ? $r_vars[$name_inp]:"";
-            $vald = new cgEvaluator($eval);
+            $vald = new Evaluator($eval);
             $vald->validation($this->items['validator'][$post_val]);
             $valev = $vald->isValid();
 
@@ -83,13 +86,13 @@ class CgFormValidator{
   }
 
 }
-class cgEvaluator{
+class Evaluator{
   public $value = "";
   private $validations = ["novalues" => null, "novoid" => false, "regex" => null, "dimension" => null, "range" => null,"equalvalues"=>null];
   private $keyvalidations = ["novalues", "novoid", "regex", "dimension", "range", "equalvalues"];
   private $typeError = "NO ERROR DETECTED";
   function __construct($value){
-    $this -> value = $value;
+    $this->value = $value;
   }
   function getTypeError(){
     return $this->typeError;
@@ -98,8 +101,8 @@ class cgEvaluator{
   function validation($setvalidation){
 
     foreach ($setvalidation as $key => $value) {
-      if (in_array($key,$this -> keyvalidations)) {
-        $this -> validations[$key] = $setvalidation[$key];
+      if (in_array($key,$this->keyvalidations)) {
+        $this->validations[$key] = $setvalidation[$key];
       }
     }
     return $this;
@@ -107,32 +110,32 @@ class cgEvaluator{
   function isValid(){
     $valid = true;
 
-    if (!is_null($this -> validations["novalues"])) {
-      $valid = !in_array($this -> value, $this -> validations["novalues"]);
-      $this -> typeError = "value no accepted";
+    if (!is_null($this->validations["novalues"])) {
+      $valid = !in_array($this->value, $this->validations["novalues"]);
+      $this->typeError = "value no accepted";
     }
     if ($valid) {
-      if ($this -> validations["novoid"]) {
-        $valid = strlen($this -> value) > 0;
-        $this -> typeError = "value is void";
+      if ($this->validations["novoid"]) {
+        $valid = strlen($this->value) > 0;
+        $this->typeError = "value is void";
       }
     }
 
     if ($valid) {
-      if (!is_null($this -> validations["regex"])) {
-        if (strlen($this -> value) > 0 && !is_null($this -> value)) {
-          $valid = preg_match($this -> validations["regex"], $this -> value) ? true: false;
+      if (!is_null($this->validations["regex"])) {
+        if (strlen($this->value) > 0 && !is_null($this->value)) {
+          $valid = preg_match($this->validations["regex"], $this->value) ? true: false;
         }
-        $this -> typeError = "incorrect format";
+        $this->typeError = "incorrect format";
       }
     }
 
     if ($valid) {
-      $dimension = $this -> validations["dimension"];
+      $dimension = $this->validations["dimension"];
       if (!is_null($dimension)) {
         $valDim = false;
-        $dimvalue = strlen($this -> value);
-        //$valid = in_array(strlen($this -> value), $dimension);
+        $dimvalue = strlen($this->value);
+        //$valid = in_array(strlen($this->value), $dimension);
         foreach ($dimension as $key => $value) {
           if (gettype($value) === "integer") {
             $valDim |= $dimvalue === $value;
@@ -141,7 +144,7 @@ class cgEvaluator{
             if (is_numeric($value)) {
               $valDim |= $dimvalue === intval($value);
             }else {
-              if (preg_match(cg::$range,$value)) {
+              if (preg_match(cg\reg::$range,$value)) {
                 $arrg = preg_split("/\-/i",$value);
                 $arrg[0] = intval($arrg[0]);
                 $arrg[1] = intval($arrg[1]);
@@ -151,15 +154,15 @@ class cgEvaluator{
           }
         }
         $valid = $valDim;
-        $this -> typeError = "incorrect dimension";
+        $this->typeError = "incorrect dimension";
       }
     }
     if ($valid) {
-      $range = $this -> validations["range"];
-      if (!is_null($this -> validations["range"])) {
-        $this -> typeError = "out range";
-        if (is_numeric($this -> value)) {
-          $temp = floatval($this -> value);
+      $range = $this->validations["range"];
+      if (!is_null($this->validations["range"])) {
+        $this->typeError = "out range";
+        if (is_numeric($this->value)) {
+          $temp = floatval($this->value);
           $valid = $temp >= $range[0] && $temp <= $range[1];
         }
         else {
@@ -168,25 +171,25 @@ class cgEvaluator{
       }
     }
     if ($valid) {
-      if (!is_null($this -> validations["equalvalues"])) {
-        $valid = in_array($this -> value, $this -> validations["equalvalues"]);
-        $this -> typeError = "value no accepted";
+      if (!is_null($this->validations["equalvalues"])) {
+        $valid = in_array($this->value, $this->validations["equalvalues"]);
+        $this->typeError = "value no accepted";
       }
     }
-    if($valid) $this -> typeError = "NO ERROR DETECTED";
+    if($valid) $this->typeError = "NO ERROR DETECTED";
     return $valid;
   }
 
 }
-class cgValidator{
+class Validator{
   public $error = ["value" => [], "description" => [], "desc_error" => []];
   public $allvalid = true;
 
   function onlyError(){
     $error = ["value" => [], "description" => []];
-    foreach ($this -> error["description"] as $key => $value) {
+    foreach ($this->error["description"] as $key => $value) {
       if ($value !== "IS_VALID") {
-        array_push($error["value"],$this -> error["value"][$key]);
+        array_push($error["value"],$this->error["value"][$key]);
         array_push($error["description"],$value);
       }
     }
@@ -194,20 +197,20 @@ class cgValidator{
   }
   function addValue($value,$validator,$name = NULL){
     $name = is_null($name) ? $value : $name;
-    $val = new cgEvaluator($value);
-    $val -> validation($validator);
-    $valev = $val -> isValid();
+    $val = new Evaluator($value);
+    $val->validation($validator);
+    $valev = $val->isValid();
     $desc = ($valev ? "IS_VALID": "NO_IS_VALID(".$val->value.")");
     array_push($this->error["value"], $name);
     array_push($this->error["description"], $desc);
     array_push($this->error["desc_error"], $val->getTypeError());
-    $this -> allvalid &= $valev;
+    $this->allvalid &= $valev;
 
 
     return $this;
   }
 }
-class CgMDom{
+class MDom{
   public $list = [];
   public $length = 0;
   public function __construct(&$set){
@@ -215,68 +218,68 @@ class CgMDom{
     $this->length = count($set);
   }
   function emptyDom(){
-    foreach ($this->list as $i => $sel) if (CgDom::isCgDom($sel)) $this->list[$i]->emptyDom();
+    foreach ($this->list as $i => $sel) if (Dom::isDom($sel)) $this->list[$i]->emptyDom();
     return $this;
   }
   function dom($set){
-    foreach ($this->list as $i => $sel) if (CgDom::isCgDom($sel)) $this->list[$i]->dom($set);
+    foreach ($this->list as $i => $sel) if (Dom::isDom($sel)) $this->list[$i]->dom($set);
     return $this;
   }
   function addClass($set){
-    foreach ($this->list as $i => $sel) if (CgDom::isCgDom($sel)) $this->list[$i]->addClass($set);
+    foreach ($this->list as $i => $sel) if (Dom::isDom($sel)) $this->list[$i]->addClass($set);
     return $this;
   }
   function generate($set){
-    foreach ($this->list as $i => $sel) if (CgDom::isCgDom($sel)) $this->list[$i]->generate($set);
+    foreach ($this->list as $i => $sel) if (Dom::isDom($sel)) $this->list[$i]->generate($set);
     return $this;
   }
   function removeClass($set){
-    foreach ($this->list as $i => $sel) if (CgDom::isCgDom($sel)) $this->list[$i]->removeClass($set);
+    foreach ($this->list as $i => $sel) if (Dom::isDom($sel)) $this->list[$i]->removeClass($set);
     return $this;
   }
   function attr($set,$val = null){
-    foreach ($this->list as $i => $sel) if (CgDom::isCgDom($sel)) $this->list[$i]->attr($set,$val);
+    foreach ($this->list as $i => $sel) if (Dom::isDom($sel)) $this->list[$i]->attr($set,$val);
     return $this;
   }
   function removeAttr($set){
-    foreach ($this->list as $i => $sel) if (CgDom::isCgDom($sel)) $this->list[$i]->removeAttr($set);
+    foreach ($this->list as $i => $sel) if (Dom::isDom($sel)) $this->list[$i]->removeAttr($set);
     return $this;
   }
   function val($set){
-    foreach ($this->list as $i => $sel) if (CgDom::isCgDom($sel)) $this->list[$i]->val($set);
+    foreach ($this->list as $i => $sel) if (Dom::isDom($sel)) $this->list[$i]->val($set);
     return $this;
   }
   function append($set){
     foreach ($this->list as $i => $sel) {
-      if (CgDom::isCgDom($sel)) foreach (func_get_args() as $e => $item) $this->list[$i]->append($item);
+      if (Dom::isDom($sel)) foreach (func_get_args() as $e => $item) $this->list[$i]->append($item);
     }
     return $this;
   }
 
   function prepend($set){
     foreach ($this->list as $i => $sel) {
-      if (CgDom::isCgDom($sel)) foreach (func_get_args() as $e => $item) $this->list[$i]->prepend($item);
+      if (Dom::isDom($sel)) foreach (func_get_args() as $e => $item) $this->list[$i]->prepend($item);
     }
     return $this;
   }function after($set){
     foreach ($this->list as $i => $sel) {
-      if (CgDom::isCgDom($sel)) foreach (func_get_args() as $e => $item) $this->list[$i]->after($item);
+      if (Dom::isDom($sel)) foreach (func_get_args() as $e => $item) $this->list[$i]->after($item);
     }
     return $this;
   }
   function before($set){
     foreach ($this->list as $i => $sel) {
-      if (CgDom::isCgDom($sel)) foreach (func_get_args() as $e => $item) $this->list[$i]->before($item);
+      if (Dom::isDom($sel)) foreach (func_get_args() as $e => $item) $this->list[$i]->before($item);
     }
     return $this;
   }
 
   function removeParent(){
-    foreach ($this->list as $i => $sel) if (CgDom::isCgDom($sel)) $this->list[$i]->removeParent($set);
+    foreach ($this->list as $i => $sel) if (Dom::isDom($sel)) $this->list[$i]->removeParent($set);
     return $this;
   }
   function text($set){
-    foreach ($this->list as $i => $sel) if (CgDom::isCgDom($sel)) $this->list[$i]->text($set);
+    foreach ($this->list as $i => $sel) if (Dom::isDom($sel)) $this->list[$i]->text($set);
     return $this;
   }
   function __tostring(){
@@ -288,7 +291,7 @@ class CgMDom{
     return $t_S;
   }
 }
-class CgDom{
+class Dom{
   public $typeDom = "div";
   private $append = "";
   private $attr = "";
@@ -334,14 +337,18 @@ class CgDom{
   }
 
   function remove($item){
-    if (CgDom::isCgDom($item)) {
+    if (Dom::isDom($item)) {
       $pos = array_search($item,$this->childrens,true);
       if ($pos !== false) unset($this->childrens[$pos]);
     }
     return $this;
   }
   function removeParent(){
-    if (!is_null($this->parent)) unset($this->parent->childrens[array_search($this,$this->parent->childrens,true)]);
+    if (!is_null($this->parent)) {
+      //unset($this->parent->childrens[]);
+      array_splice($this->parent->childrens,array_search($this,$this->parent->childrens,true),1);
+      $this->parent = null;
+    }
     return $this;
   }
   function emptyDom(){
@@ -370,7 +377,7 @@ class CgDom{
     if ($fullMap) return new CgMDom($founds);
     return $founds;
   }
-  function dom($set){$this -> typeDom = $set; return $this;}
+  function dom($set){$this->typeDom = $set; return $this;}
   function addClass($setClass){
     $class = $this->attr("class");
     $class .= " ".$setClass;
@@ -494,8 +501,8 @@ class CgDom{
 
   }
   function render($render = true){
-    if ($render) echo $this -> makeRender();
-    else return $this -> makeRender();
+    if ($render) echo $this->makeRender();
+    else return $this->makeRender();
   }
   function lastChild(){
     if (count($this->childrens) > 0) {
@@ -504,7 +511,7 @@ class CgDom{
     return null;
   }
   function prepend($value){
-    $temp = cg::dom("pre");
+    $temp = dom("pre");
     foreach (func_get_args() as $i=> $newAppend) $temp->append(func_get_arg($i));
     $this->fromAnother($temp,0);
     unset($temp);
@@ -512,7 +519,7 @@ class CgDom{
   }
   function after($value){
     if (!is_null($this->parent)) {
-      $temp = cg::dom("pre");
+      $temp = dom("pre");
       $pos = array_search($this,$this->parent->childrens,true);
       foreach (func_get_args() as $i=> $newAppend) $temp->append(func_get_arg($i));
       $this->parent->fromAnother($temp,$pos+1);
@@ -522,7 +529,7 @@ class CgDom{
   }
   function before($value){
     if (!is_null($this->parent)) {
-      $temp = cg::dom("pre");
+      $temp = dom("pre");
       $pos = array_search($this,$this->parent->childrens,true);
       foreach (func_get_args() as $i=> $newAppend) $temp->append(func_get_arg($i));
       $this->parent->fromAnother($temp,$pos);
@@ -530,25 +537,25 @@ class CgDom{
     }
     return $this;
   }
-  static function isCgDom($cg){
+  static function isDom($cg){
     if (gettype($cg) === "object") {
-      return (is_subclass_of($cg,"CgDom") || get_class($cg) === "CgDom");
+      return (is_subclass_of($cg,"cg\Dom") || get_class($cg) === "cg\Dom");
     }
     return false;
   }
-  function append($cgDom){
+  function append($Dom){
     foreach (func_get_args() as $key => $value) {
       if(is_array($value)){
         foreach ($value as $e => $v_array) {
-          if(CgDom::isCgDom($v_array)) $this->append($v_array);
+          if(Dom::isDom($v_array)) $this->append($v_array);
           else if(is_numeric($e)) $this->append('@@'.$v_array);
-          else if(is_string($e)) $this->append(cg::dom($e)->append($v_array));
+          else if(is_string($e)) $this->append(dom($e)->append($v_array));
         }
       }
       else if (gettype($value) === "object" || gettype($value) === "string") {
         if (gettype($value) === "object") {
 
-          if (CgDom::isCgDom($value)) {
+          if (Dom::isDom($value)) {
             if (func_get_arg($key)->typeDom === "-") {
               // NOTE: VERIFICAR POSIBLE ERROR AL NO PASAR UN PUNTERO
               $this->fromAnother($value,count($this->childrens));
@@ -557,6 +564,7 @@ class CgDom{
               array_push($this->childrens,null);
               func_get_arg($key)->removeParent();
               func_get_arg($key)->parent = &$this;
+
               $this->childrens[count($this->childrens)-1] = func_get_arg($key);
             }
           }
@@ -570,17 +578,9 @@ class CgDom{
           elseif (preg_match("/^\[#\[[ \|,.\-_#\[\]\da-z]+\]\]$/i",$value)) {
             $value = explode(',',substr($value,3,-2));
             foreach ($value as $e => $item) {
-              $temp_cg = cg::dom($item);
+              $temp_cg = dom($item);
               if ($temp_cg->typeDom !== "-") $this->append($temp_cg);
               else unset($temp_cg);
-            }
-          }
-          else if(preg_match("/^\{\{globals:[a-z]+[a-z_]*\}\}$/i",$value)){
-            $value = substr(str_replace(" ","",$value),10,-2);
-            if (!empty($GLOBALS[$value])) {
-              $this->append($GLOBALS[$value]);
-            }else {
-              $this->append($value);
             }
           }
           else {
@@ -622,7 +622,7 @@ class CgDom{
       if (strlen($outSpace[0]) >= 2 && $par) array_push($subarr,substr($val,2));
       if (count($cg->childrens) > 0) {
         $last = $cg->lastChild();
-        if (CgDom::isCgDom($last)) {
+        if (Dom::isDom($last)) {
           $this->unit($last,$subarr);
           $subarr = [];
         }
@@ -633,14 +633,14 @@ class CgDom{
       }
       else if(strlen($outSpace[0]) === 0){
         $par = true;
-        $ca = cg::dom($val);
+        $ca = dom($val);
         $this->unit($ca,$subarr);
         $cg->append($ca);
       }
     }
     if (count($cg->childrens) > 0) {
       $last = $cg->lastChild();
-      if (CgDom::isCgDom($last)) {
+      if (Dom::isDom($last)) {
         $this->unit($last,$subarr);
         $subarr = [];
       }
@@ -669,7 +669,7 @@ class CgDom{
     }
     return $new_array_string;
   }
-  private function initFind($param,$cgDom,&$out) {
+  private function initFind($param,$Dom,&$out) {
 
     $b_parameters = preg_match_all("/([.#]{0,1}[a-z\d\-_]+)+/i",$param,$found_paramameters);
     if($b_parameters){
@@ -689,8 +689,8 @@ class CgDom{
       }
 
 
-      foreach ($cgDom->childrens as $i => $sel) {
-        if (CgDom::isCgDom($sel)) {
+      foreach ($Dom->childrens as $i => $sel) {
+        if (Dom::isDom($sel)) {
           if ($sel->typeDom !== "-") {
 
             if(!$b_p) $ff_paramameter = strtolower($sel->typeDom);
@@ -782,19 +782,19 @@ class CgDom{
       }
     }
   }
-  private function fromAnother(&$cgDom,$index){
+  private function fromAnother(&$Dom,$index){
       $add_ar = [];
       $c_child = count($this->childrens);
       if ($c_child < $index) $index = $c_child; if ($index < 0) $index = 0;
 
-      $start = count($cgDom->childrens) - 1;
+      $start = count($Dom->childrens) - 1;
       for ($i = $start; $i >= 0 ; $i--) {
         array_unshift($add_ar,NULL);
-        if (CgDom::isCgDom($cgDom->childrens[$i])) {
-          $add_ar[0] = &$cgDom->childrens[$i];
+        if (Dom::isDom($Dom->childrens[$i])) {
+          $add_ar[0] = &$Dom->childrens[$i];
           $add_ar[0]->removeParent();
         }
-        else $add_ar[0] = $cgDom->childrens[$i];
+        else $add_ar[0] = $Dom->childrens[$i];
       }
 
 
@@ -802,80 +802,43 @@ class CgDom{
       $pst_ar = array_slice($this->childrens,$index,$c_child);
       $this->childrens = array_merge($pre_ar,$add_ar,$pst_ar);
       foreach ($this->childrens as $i=> $ch) {
-        if (CgDom::isCgDom($ch)) {
+        if (Dom::isDom($ch)) {
           $this->childrens[$i]->parent = &$this;
         }
       }
     return $this;
   }
   function __tostring(){
-    $t_S = $this->typeDom."\n";
+    $t_S = "";
+    $self_class = (strlen($this->attr("class")) > 0 ? ".":"").(str_replace(" ",".",$this->attr("class")));
+    $t_S .= $this->typeDom.$self_class.(strlen($this->attr("id")) > 0 ? "#":"").$this->attr("id")." childrens(".count($this->childrens).")\n";
     foreach ($this->childrens as $i => $c) {
-      $class = (strlen($c->attr("class")) > 0 ? ".":"").(str_replace(" ",".",$c->attr("class")));
-      $t_S .= gettype($c) === 'string' ? "  string: ".$c."\n" : "  typeDom: ".$c->typeDom.$class.(strlen($c->attr("id")) > 0 ? "#":"").$c->attr("id")." childrens(".count($c->childrens).")\n";
+      $class = Dom::isDom($c)? ((strlen($c->attr("class")) > 0 ? ".":"").(str_replace(" ",".",$c->attr("class")))) : "";
+      $t_S .= gettype($c) === 'string' || gettype($c) === 'NULL'? (gettype($c) === 'NULL' ? '  NULL': "  string: ".$c)."\n" : "  typeDom: ".$c->typeDom.$class.(strlen($c->attr("id")) > 0 ? "#":"").$c->attr("id")." childrens(".count($c->childrens).")\n";
     }
     return $t_S;
   }
 }
-class cgFormInput{
-  private $input = "textbox";
-  private $listInputs;
-  private $leyenda;
-  function __construct($setInput){
-    $this->listInputs = ["cselect" => cg::dom("select")->addClass("FormInput"),"textbox" => cg::dom("input")];
-    $this->leyenda = cg::dom("div")->text("leyenda");
-    if (!empty($this -> listInputs[$setInput])) $this -> input = $setInput;
-  }
 
-  function setInput($setInput){
-    if (!empty($this -> listInputs[$setInput])) $this -> input = $setInput;
-    return $this;
-  }
-  function addItem(){
-    if ($this->input === "cselect") {
-      foreach (func_get_args() as $key => $value) {
-        $this->listInputs["cselect"]->append($value);
-      }
-    }
-    return $this;
-  }
-  function render(){
-    $this->leyenda->text("NO ES UNA LEYENDA");
-    cg::dom("div")->append(
-      cg::dom("div")->append($this->leyenda),
-      $this->listInputs[$this->input]
-      )->render();
-    }
-  }
-class cg{
-
-  public static function validator(){
-    return new cgValidator();
-  }
-  public static function v($value = null){
-    if (is_null($value)) return $GLOBALS["_cgVars"];
-    return $GLOBALS["_cgVars"][$value];
-  }
-  public static function evaluator($value){
-    return new cgEvaluator($value);
-  }
-  public static function dom($value){
-    return new CgDom($value);
-  }
-
-  public static function mDom($value){
-    return new CgMDom($value);
-  }
-
-  public static function formInput($setInput){
-    return new cgFormInput($setInput);
-  }
-  public static function formValidator($form,$nameForm){
-    return new CgFormValidator($form,$nameForm);
-  }
-
-
+class reg{
+  static $nums = "/^[0-9]+$/i";
+  static $words = "/^[a-zñÑáéíóúÁÉÍÓÚü]+$/i";
+  static $text = "/^[a-zñÑáéíóúÁÉÍÓÚü ]+$/i";
+  static $alphanums = "/^[0-9a-zñÑáéíóúÁÉÍÓÚü ]+$/i";
+  static $email = "/^[a-z]+[a-z_\.\-0-9]+@[a-z]+\.[a-z]{2,5}$/i";
+  static $range = "/^[0-9]+[ ]{0,1}\-[ ]{0,1}[0-9]+$/i";
+  static $bits = "/^[0-1]$/i";
+  static $fecha = "/^(19|20)[0-9]{2}-[0-9]{2}-[0-9]{2}$/i";
+  static $class = "/\.[\-\da-z_]+/i";
+  static $id = "/\#[\-\da-z_]+/i";
 }
-$cg = new cg();
+
+function validator(){ return new Validator();}
+function v($value = null){ if (is_null($value)) return $GLOBALS["_cgVars"]; return $GLOBALS["_cgVars"][$value]; }
+function evaluator($value){   return new Evaluator($value); }
+function dom($value){ return new Dom($value); }
+function mDom($value){ return new MDom($value); }
+function formInput($setInput){ return new FormInput($setInput); }
+function formValidator($form,$nameForm){ return new FormValidator($form,$nameForm); }
 
   ?>

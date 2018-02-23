@@ -1,6 +1,8 @@
 <?php
-class __cg_base_widgets extends CgDom
-{
+
+namespace cg;
+
+class __base_widgets extends Dom {
   function name($set)
   {
     if(is_null($set)) return $this->attr('cg_name');
@@ -15,18 +17,16 @@ class __cg_base_widgets extends CgDom
   }
 
 }
-class __cg_base_wrap extends __cg_base_widgets
-{
+class __base_wrap extends __base_widgets {
     public $body;
     function __construct()
     {
-        $this->body = cg::dom('div');
+        $this->body = dom('div');
         $this->append($this->body);
     }
 
 }
-class __cg_base_label extends __cg_base_widgets
-{
+class __base_label extends __base_widgets {
   public $banda;
   public $title;
   public $description;
@@ -40,11 +40,11 @@ class __cg_base_label extends __cg_base_widgets
           'div#[wrap]'=>['span#[title]','span#[description]']
         ]
       ]);
-      $this->body = cg::v('body');
-      $this->banda = cg::v('banda');
-      $this->wrap = cg::v('wrap');
-      $this->title = cg::v('title');
-      $this->description = cg::v('description');
+      $this->body = v('body');
+      $this->banda = v('banda');
+      $this->wrap = v('wrap');
+      $this->title = v('title');
+      $this->description = v('description');
   }
   function title($set)
   {
@@ -57,51 +57,38 @@ class __cg_base_label extends __cg_base_widgets
       return $this;
   }
 }
-class __cg_base_link extends __cg_base_widgets
-{
+class __base_link extends __base_widgets {
     public $title;
     public $icon;
     public $_icon = "ion-cube";
-    function __construct()
-    {
-        $this->icon = cg::dom('i');
-        $this->title = cg::dom('span TITLE');
+    function __construct() {
+        $this->icon = dom('i');
+        $this->title = dom('span TITLE');
         $this
         ->dom("a")
         ->append($this->title,$this->icon);
     }
-    function icon($set)
-    {
-        $this->icon->removeClass($this->_icon)->addClass($set);
-        $this->icon->attr('cg_icon',$set);
-        $this->_icon = $set;
-        return $this;
+    function icon($set) {
+        $this->icon->replaceClass($this->_icon,$set)->attr('cg_icon',$set); $this->_icon = $set; return $this;
     }
-    function title($set)
-    {
-        $this->title->text($set);
-        return $this;
+    function title($set) {
+        $this->title->text($set); return $this;
     }
-    function link($set)
-    {
-        $this->attr('href',$set);
-        return $this;
+    function link($set) {
+        $this->attr('href',$set); return $this;
     }
-    function target($set)
-    {
-        $this->attr('target',$set);
-        return $this;
+    function target($set) {
+        $this->attr('target',$set); return $this;
     }
 }
-class __cg_base_list extends __cg_base_wrap
-{
+class __base_list extends __base_wrap {
   public $header;
   public $wrap_childs;
   function __construct()
   {
     parent::__construct();
-    $this->header = new __cg_base_link();
-    $this->wrap_childs = cg::dom('div');
+    $this->header = new __base_link();
+    $this->wrap_childs = dom('div');
     $this->body->append($this->header,$this->wrap_childs);
   }
   function showHeader($set)
@@ -109,8 +96,26 @@ class __cg_base_list extends __cg_base_wrap
     $this->header->generate($set);
   }
 }
-class Cg_CardView_icon extends __cg_base_wrap
-{
+
+class __base_link_description extends __base_link {
+
+  public $_icon = "ion-cube";
+  function __construct() {
+    parent::__construct();
+
+
+    $this->append([
+      'div'=>[$this->title,'div#[description]']
+    ]);
+    $this->description = v('description');
+
+  }
+  function description($set) {
+   $this->description->text($set); return $this;
+  }
+}
+
+class CardView_icon extends __base_wrap {
     private $_icon = "ion-cube";
     private $title;
     private $subTitle;
@@ -136,20 +141,23 @@ class Cg_CardView_icon extends __cg_base_wrap
                 "span#[icon].CardView_icon-icon"
             ]
         ]);
-        $this->button = new __cg_base_link();
+        $this->button = new __base_link();
         $this->button->addClass('CardView_icon-link_1');
         $this->button->title->addClass('CardView_icon-link_1_title')->text('Más información');
         $this->button->icon->addClass('CardView_icon-_link_1_icon');
         $this->button->icon('ion-more');
 
-        $this->title = cg::v('title');
-        $this->subTitle = cg::v('subTitle');
-        $this->description = cg::v('description');
-        $this->link_2 = cg::v('link_2');
-        $this->icon = cg::v('icon')->addClass($this->_icon);
+        $this->title = v('title');
+        $this->subTitle = v('subTitle');
+        $this->description = v('description');
+        $this->link_2 = v('link_2');
+        $this->icon = v('icon')->addClass($this->_icon);
 
         $this->name('CardView_icon')->border('shadow');
-        cg::v('w_link')->append($this->button);
+        v('w_link')->append($this->button);
+    }
+    static function create() {
+      return new CardView_icon();
     }
     function datasource($set,$order = null)
     {
@@ -181,12 +189,10 @@ class Cg_CardView_icon extends __cg_base_wrap
     }
 
 }
-class Cg_Label_icon extends __cg_base_label
-{
+class Label_icon extends __base_label {
   private $_icon = "ion-cube";
   private $icon;
-  function __construct()
-  {
+  function __construct() {
     parent::__construct();
     $this->addClass('Label_icon')->border('shadow-s')->name('Label_icon');
 
@@ -196,8 +202,11 @@ class Cg_Label_icon extends __cg_base_label
     $this->title->addClass('Label_icon-title');
     $this->description->addClass('Label_icon-description');
 
-    $this->icon = cg::dom('i.Label_icon-icon')->addClass($this->_icon);
+    $this->icon = dom('i.Label_icon-icon')->addClass($this->_icon);
     $this->banda->after($this->icon);
+  }
+  static function create() {
+    return new Label_icon();
   }
   function icon($set)
   {
@@ -206,8 +215,7 @@ class Cg_Label_icon extends __cg_base_label
       return $this;
   }
 }
-class Cg_IList_icon extends __cg_base_link
-{
+class IList_icon extends __base_link {
   function __construct()
   {
     parent::__construct();
@@ -217,13 +225,11 @@ class Cg_IList_icon extends __cg_base_link
     $this->icon->addClass('IList_icon-icon');
   }
 }
-class Cg_ListILink extends __cg_base_list
-{
+class ListILink extends __base_list {
   public $listItems = [];
   private $_hiddenHeaderClass = "ListILink__hiddenHeader";
   private $_iconModeClass = "ListILink__iconMode";
-  function __construct()
-  {
+  function __construct() {
     parent::__construct();
     $this->addClass('ListILink');
     $this->body->addClass('ListILink_content');
@@ -234,6 +240,9 @@ class Cg_ListILink extends __cg_base_list
     $this->header->icon->addClass('ListILink-icon');
     $this->wrap_childs->addClass('ListILink-body');
     $this->name('ListILink');
+  }
+  static function create() {
+    return new ListILink();
   }
   function icon($set){
     $this->header->icon($set); return $this;
@@ -264,7 +273,7 @@ class Cg_ListILink extends __cg_base_list
     return $this;
   }
   static function item() {
-    $item = new __cg_base_link();
+    $item = new __base_link();
     $item->addClass('ListILink-item')->icon($item->_icon);
     $item->title->addClass('ListILink-item-title');
     $item->icon->addClass('ListILink-item-icon');
@@ -278,7 +287,7 @@ class Cg_ListILink extends __cg_base_list
     return $this;
   }
 }
-class CgSimpleList extends __cg_base_wrap {
+class SimpleList extends __base_wrap {
   private $listItems = [];
   private $wrap_childs;
   private $title;
@@ -295,9 +304,9 @@ class CgSimpleList extends __cg_base_wrap {
       'div#[body].SimpleList-body'
     ]);
 
-    $this->wrap_childs = cg::v('body');
-    $this->title = cg::v('title');
-    $this->icon = cg::v('icon');
+    $this->wrap_childs = v('body');
+    $this->title = v('title');
+    $this->icon = v('icon');
     $this->icon($this->_iconClass)->addClass('SimpleList');;
   }
   function addItem($items) {
@@ -309,14 +318,14 @@ class CgSimpleList extends __cg_base_wrap {
     return $this;
   }
   static function item() {
-    $item = new __cg_base_link();
+    $item = new __base_link();
     $item->addClass('SimpleList-item');
     $item->title->addClass('SimpleList-item-title');
     $item->icon->addClass('SimpleList-item-icon');
     $item->icon('ion-ios-circle-outline');
     return $item;
   }
-  static function create() { return new CgSimpleList();}
+  static function create() { return new SimpleList();}
   function icon($set) {
       $this->icon->replaceClass($this->_iconClass,$set)->attr('cg_icon',$set); $this->_iconClass = $set;
       return $this;
@@ -339,24 +348,67 @@ class CgSimpleList extends __cg_base_wrap {
     $this->title->text($set); return $this;
   }
 }
-class CgSimpleButton extends __cg_base_link {
+class SimpleButton extends __base_link {
   function __construct() {
     parent::__construct();
     $this->addClass('SimpleButton')->border('shadow-s');
     $this->icon->addClass('SimpleButton-icon');
     $this->title->addClass('SimpleButton-title');
+    $this->icon('ion-link');
   }
   static function create(){
-    return new CgSimpleButton();
+    return new SimpleButton();
   }
 }
+class MiniList extends __base_wrap {
+  public $listItems = [];
+  function __construct() {
+    parent::__construct();
+    $this->addClass('MiniList');
+    $this->body->addClass('MiniList_content')->append([
+      'a#[link].MiniList-header'=>['span#[title].MiniList-title'],
+      'div#[wrap_childs].MiniList-body'
+    ]);
+    $this->link = v('link');
+    $this->title = v('title');
+    $this->wrap_childs = v('wrap_childs');
+  }
+  static function create() { return new MiniList(); }
+  static function item() {
+    $item = new __base_link_description();
+    $item->addClass('MiniList-item')->icon('ion-ios-circle-outline');
+    $item->title->addClass('MiniList-item-title');
+    $item->icon->addClass('MiniList-item-icon');
+    $item->description->addClass('MiniList-item-description');
+    return $item;
+  }
+  function addItem($items) {
+    foreach (func_get_args() as $key => $item) {
+        array_push($this->listItems,$item);
+        $this->wrap_childs->append($item);
+    }
+    return $this;
+  }
+  function datasource($data,$customData = null) {
+    $this->wrap_childs->emptyDom();
+    $this->listItems = [];
+    if (is_array($customData)) foreach ($customData as $k => $v) { if (isset($data[$k])) $data[$v] = $data[$k];}
 
-class cg_widgets{
-    static function cardView_icon() { return new cg_CardView_Icon();}
-    static function label_icon(){ return new cg_Label_icon(); }
-    static function iList_icon(){ return new Cg_IList_icon(); }
-    static function listILink(){ return new Cg_ListILink(); }
+    foreach ($data as $k => $item) {
+      $__i = $this::item();
+      if (isset($item['title'])) $__i->title($item['title']);
+      if (isset($item['link'])) $__i->link($item['link']);
+      if (isset($item['target'])) $__i->target($item['target']);
+      if (isset($item['description'])) $__i->description($item['description']);
+      $this->addItem($__i);
+    }
+    return $this;
+  }
+  function title($set) { $this->title->text($set); return $this;}
+  function target($set) { $this->title->attr('target',$set); return $this;}
+  function link($set) { $this->title->attr('link',$set); return $this;}
 }
+
 
 
 ?>
