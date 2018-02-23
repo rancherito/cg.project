@@ -344,11 +344,7 @@ class Dom{
     return $this;
   }
   function removeParent(){
-    if (!is_null($this->parent)) {
-      //unset($this->parent->childrens[]);
-      array_splice($this->parent->childrens,array_search($this,$this->parent->childrens,true),1);
-      $this->parent = null;
-    }
+    if (!is_null($this->parent)) array_splice($this->parent->childrens,array_search($this,$this->parent->childrens,true),1);// $this->parent = null;
     return $this;
   }
   function emptyDom(){

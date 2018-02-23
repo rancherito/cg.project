@@ -435,3 +435,56 @@
       .cg-widgets_styles-orange .SimpleButton .SimpleButton-icon::before {
         display: block;
         line-height: 40px; }
+  .cg-widgets_styles-orange .MiniList .MiniList-header {
+    font-size: 18px;
+    height: 40px;
+    display: block;
+    line-height: 40px;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    padding: 0 10px; }
+  .cg-widgets_styles-orange .MiniList .MiniList-body {
+    padding: 0 2px 10px 2px;
+    overflow: hidden; }
+  .cg-widgets_styles-orange .MiniList .MiniList-item {
+    padding: 4px 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box; }
+    .cg-widgets_styles-orange .MiniList .MiniList-item .MiniList-item_content {
+      display: block;
+      overflow: hidden;
+      position: relative; }
+      .cg-widgets_styles-orange .MiniList .MiniList-item .MiniList-item_content > div {
+        position: relative;
+        width: calc(100% - 31px);
+        float: right; }
+        .cg-widgets_styles-orange .MiniList .MiniList-item .MiniList-item_content > div .MiniList-item-title {
+          display: block;
+          font-size: 16px;
+          font-weight: lighter;
+          height: 30px;
+          line-height: 30px;
+          text-align: left;
+          padding: 10px 10px 0 0;
+          position: relative;
+          overflow: hidden;
+          white-space: nowrap;
+          -o-text-overflow: ellipsis;
+          text-overflow: ellipsis; }
+        .cg-widgets_styles-orange .MiniList .MiniList-item .MiniList-item_content > div .MiniList-item-description {
+          font-size: 14px;
+          display: block;
+          padding: 0 10px 10px 0; }
+      .cg-widgets_styles-orange .MiniList .MiniList-item .MiniList-item_content .MiniList-item-icon {
+        float: left;
+        height: 30px;
+        width: 30px;
+        display: block;
+        padding-top: 10px; }
+        .cg-widgets_styles-orange .MiniList .MiniList-item .MiniList-item_content .MiniList-item-icon::before {
+          display: block;
+          width: 100%;
+          height: 100%;
+          line-height: 30px;
+          text-align: center; }

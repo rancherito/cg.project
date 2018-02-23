@@ -22,7 +22,7 @@ $control = dom('-')->append([
 ]);
 $body = v('body');
 $wrap = v('wrap');
-
+/*
 $cards = [];
 $labels = [];
 $lists = [];
@@ -62,9 +62,13 @@ for ($i=0; $i < 3; $i++) {
   $wrap->append($listButtons[$i]);
 }
 
-$wrap->append(['div(style="clear: both;")']);
+$wrap->append(['div(style="clear: both;")']);*/
 
-$wrap->append(MiniList::create()->title('lala')->addItem(MiniList::item()));
+$wrap->append(
+  MiniList::create()->iconList('ion-ios-heart-outline')->addItem(
+    MiniList::item()->title('MI TITULASO')->description('Lorem Inpus Dolor sit amet'),
+    MiniList::item()->title('MI TITULASO')->description('Lorem Inpus Dolor sit amet')
+  ));
 
 $body->append(['script(src="js/cg.widgets.js")']);
 
