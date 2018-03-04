@@ -8,5 +8,11 @@ cg.v('wachalatato1').addItem({title:'michilala',icon: 'ion-home',link: '//www.yo
 
 cg.v('wachalatato1').hiddenHeader(true).title('Lala land');*/
 //$('body').append(aa);
+var no = cg.v('GPanels');
+
+var ne = new cg.widgets.GPanels.item();
+ne.key('lall');
+ne.panel('michilala');
+no.addItem(ne);
 
 });

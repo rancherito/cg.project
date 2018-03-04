@@ -117,46 +117,41 @@ cg.widgets.GPanels = function GPanels(from) {
   var header = $(base.find('.GPanels-header'));
   var body = $(base.find('.GPanels-body'));
 
-  var item = function (_item){
-    var item_base = typeof _item !== 'undefined' ? $(_item[0]) : $("<div class='GPanels-item'></div>");
-    var item_key = typeof _item !== 'undefined' ? $(_item[1]) : $("<div class='GPanels-key'></div>");
-    item_base.Key = item_key;
-    item_base.key = function(set){
-      item_base.Key.text(set); return item_base;
-    }
-    item_base.panel = function(set){
-      item_base.empty().append(set); return item_base;
-    }
-
-    return item_base;
-  }
   base.addItem = function addItem(item){
     listItems.push(item);
-    header.append(item.key);
+    header.append(item.Key);
     body.append(item);
     item.Key.click(function(e){
       for (var i in listItems) { listItems[i].Key.removeClass('GPanels-key__active'); listItems[i].removeClass('GPanels-panel__active');}
-      item.key.addClass('GPanels-key__active'); item.addClass('GPanels-panel__active');
+      item.Key.addClass('GPanels-key__active'); item.addClass('GPanels-panel__active');
     });
     return base;
   }
   var preListItem_panel = base.find('.GPanels-item');
   var preListItem_key = base.find('.GPanels-key');
-  function lata(_item){
+  function addEvent(_item){
     _item.Key.click(function(f){
       for (var e in listItems) { listItems[e].Key.removeClass('GPanels-key__active'); listItems[e].removeClass('GPanels-panel__active');}
       _item.Key.addClass('GPanels-key__active'); _item.addClass('GPanels-panel__active');
-      console.log(_item);
     });
   }
   for (var i = 0; i < preListItem_panel.length; i++) {
-    var _item = new item([preListItem_panel[i],preListItem_key[i]]);
-    lata(_item);
-    listItems.push(_item);
+    var _item = new cg.widgets.GPanels.item([preListItem_panel[i],preListItem_key[i]]); addEvent(_item); listItems.push(_item);
   }
 
   return base;
 }
+cg.widgets.GPanels.item = function item(_item){
+    var item_base = typeof _item !== 'undefined' ? $(_item[0]) : $("<div class='GPanels-item'></div>");
+    var item_key = typeof _item !== 'undefined' ? $(_item[1]) : $("<div class='GPanels-key'></div>");
+    item_base.Key = item_key;
+    item_base.key = function(set){ item_base.Key.text(set); return item_base; }
+    item_base.panel = function(set){ item_base.empty().append(set); return item_base; }
+    item_base.padding = function(set){item_base.attr('cg_padding',set); return item_base;}
+    item_base.padding('padding');
+    return item_base;
+}
+
 cg.f_searchVars = function f_searchVars(__cg_name_var){
   var __cg_object = $('.' + __cg_name_var);
   for (var i = 0; i < __cg_object.length; i++) {
