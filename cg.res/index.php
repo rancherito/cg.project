@@ -64,13 +64,27 @@ for ($i=0; $i < 3; $i++) {
 
 $wrap->append(['div(style="clear: both;")']);*/
 
-$wrap->append(
+/*$wrap->append(
   MiniList::create()->iconList('ion-ios-heart-outline')->addItem(
     MiniList::item()->title('MI TITULASO')->description('Lorem Inpus Dolor sit amet'),
     MiniList::item()->title('MI TITULASO')->description('Lorem Inpus Dolor sit amet')
-  ));
+  ));*/
 
-$body->append(['script(src="js/cg.widgets.js")']);
+$body->append(['script(src="js/cg.widgets.js")','script(src="js/index.js")']);
+
+$wrap->append(
+  GPanels::create()->border('shadow')->addItem(
+    GPanels::item()->key('HELLO WORLD')->panel(['strong HOLA PATITA','div poquetal','strong aragato','i konichiwa'])->attr('style','background: #555; color: white;'),
+    GPanels::item()->key('GOOG BYE WORLD')->panel(['i Lorem impus dolor sit amet jajaja patatus patatan wafa fkf dsj fks d  dksf']),
+    GPanels::item()->key('The WORLD')->panel(['i Lorem impus dolor sit amet jajaja patatus patatan wafa fkf dsj fks d  dksf','p patata','div enchiladas'])
+  ),
+  GPanels::create()->border('shadow')->addItem(
+    GPanels::item()->key('HELLO WORLD')->panel(['strong HOLA PATITA','div poquetal','strong aragato','i konichiwa'])->attr('style','background: #555; color: white;'),
+    GPanels::item()->key('GOOG BYE WORLD')->panel(['i Lorem impus dolor sit amet jajaja patatus patatan wafa fkf dsj fks d  dksf']),
+    GPanels::item()->key('The WORLD')->panel(['i Lorem impus dolor sit amet jajaja patatus patatan wafa fkf dsj fks d  dksf','p patata','div enchiladas'])
+  )
+);
+
 
 $control->render();
 ?>

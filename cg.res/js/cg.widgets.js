@@ -3,7 +3,8 @@
 var cg = {
   widgets:{},
   objects:{
-    ListILink:{}
+    ListILink:{},
+    GPanels:{}
     //,CardView_icon:{},
     //Label_icon:{}
   }};
@@ -95,7 +96,7 @@ cg.widgets.ListILink = function ListILink(from){
     icon.removeClass(_iconClass).addClass(set); _iconClass = set;
     return base;
   }
-  base.addItem = function(set,order){
+  base.datasourse = function(set,order){
     if (typeof order !== 'undefined') for (var k in order) { if (typeof set[k] !== 'undefined') set[order[k]] = set[k];}
     var __i = new _item_base();
     base.listItems.push(__i);
@@ -108,13 +109,58 @@ cg.widgets.ListILink = function ListILink(from){
   }
   return base;
 }
-cg.widgets.listILink = function listILink(){
-  return new cg.widgets.ListILink();
+cg.widgets.listILink = function listILink(){ return new cg.widgets.ListILink();}
+cg.widgets.GPanels = function GPanels(from) {
+  var base = typeof from !== 'undefined' ? $(from) : $("<div class='GPanels' cg_border='shadow'><div class='GPanels-header'></div><div class='GPanels-body'></div></div>");
+  var listItems = [];
+  var _activeItem = 0;
+  var header = $(base.find('.GPanels-header'));
+  var body = $(base.find('.GPanels-body'));
+
+  var item = function (_item){
+    var item_base = typeof _item !== 'undefined' ? $(_item[0]) : $("<div class='GPanels-item'></div>");
+    var item_key = typeof _item !== 'undefined' ? $(_item[1]) : $("<div class='GPanels-key'></div>");
+    item_base.Key = item_key;
+    item_base.key = function(set){
+      item_base.Key.text(set); return item_base;
+    }
+    item_base.panel = function(set){
+      item_base.empty().append(set); return item_base;
+    }
+
+    return item_base;
+  }
+  base.addItem = function addItem(item){
+    listItems.push(item);
+    header.append(item.key);
+    body.append(item);
+    item.Key.click(function(e){
+      for (var i in listItems) { listItems[i].Key.removeClass('GPanels-key__active'); listItems[i].removeClass('GPanels-panel__active');}
+      item.key.addClass('GPanels-key__active'); item.addClass('GPanels-panel__active');
+    });
+    return base;
+  }
+  var preListItem_panel = base.find('.GPanels-item');
+  var preListItem_key = base.find('.GPanels-key');
+  function lata(_item){
+    _item.Key.click(function(f){
+      for (var e in listItems) { listItems[e].Key.removeClass('GPanels-key__active'); listItems[e].removeClass('GPanels-panel__active');}
+      _item.Key.addClass('GPanels-key__active'); _item.addClass('GPanels-panel__active');
+      console.log(_item);
+    });
+  }
+  for (var i = 0; i < preListItem_panel.length; i++) {
+    var _item = new item([preListItem_panel[i],preListItem_key[i]]);
+    lata(_item);
+    listItems.push(_item);
+  }
+
+  return base;
 }
 cg.f_searchVars = function f_searchVars(__cg_name_var){
   var __cg_object = $('.' + __cg_name_var);
   for (var i = 0; i < __cg_object.length; i++) {
-    var __cg_single = new cg.widgets.ListILink($(__cg_object[i]));
+    var __cg_single = eval("new cg.widgets."+__cg_name_var+"(__cg_object[i])");
     if(typeof cg.objects[__cg_name_var][__cg_single.attr('cg_name')] === 'undefined')   cg.objects[__cg_name_var][__cg_single.attr('cg_name')] = __cg_single;
     else{
       var __count = 1;
@@ -129,13 +175,3 @@ cg.f_searchVars = function f_searchVars(__cg_name_var){
 cg.load = function load(){
   for (var i in cg.objects) cg.f_searchVars(i);
 }
-$(document).ready(function(){
-cg.load();
-/*cg.v('wachalatato1').title('BUSQUEDA');
-cg.v('wachalatato1').listItems[1].title('lala').icon('ion-android-radio-button-on');
-cg.v('wachalatato1').addItem({title:'michilala',icon: 'ion-home',link: '//www.youtube.com', target: '_blank'});
-
-cg.v('wachalatato1').hiddenHeader(true).title('Lala land');*/
-//$('body').append(aa);
-
-});

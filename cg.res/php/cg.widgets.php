@@ -3,19 +3,13 @@
 namespace cg;
 
 class __base_widgets extends Dom {
-  function name($set)
-  {
+  function name($set) {
     if(is_null($set)) return $this->attr('cg_name');
     $this->attr('cg_name',$set);
     return $this;
   }
-  function border($set)
-  {
-    if(is_null($set)) return $this->attr('cg_border');
-    $this->attr('cg_border',$set);
-    return $this;
-  }
-
+  function border($set) { $this->attr('cg_border',$set); return $this; }
+  function padding($set) { $this->attr('cg_padding',$set); return $this; }
 }
 class __base_wrap extends __base_widgets {
     public $body;
@@ -88,7 +82,6 @@ class __base_list extends __base_wrap {
     $this->header->generate($set);
   }
 }
-
 class __base_link_description extends __base_wrap {
 
   public $_icon = "ion-cube";
@@ -106,6 +99,11 @@ class __base_link_description extends __base_wrap {
   function title($set) { $this->title->text($set); return $this; }
   function link($set) { $this->body->attr('href',$set); return $this; }
   function target($set) { $this->body->attr('target',$set); return $this; }
+}
+class __base_key_panel extends __base_widgets {
+  function __construct() {$this->key = dom('div');}
+  function key($key) { $this->key->text($key); return $this;}
+  function panel($panel) { $this->emptyDom()->append($panel); return $this;}
 }
 
 class CardView_icon extends __base_wrap {
@@ -395,6 +393,60 @@ class MiniList extends __base_wrap {
   }
   function iconList($set) { foreach ($this->listItems as $k => $val) $this->listItems[$k]->icon($set); $this->_iconItemClass = $set; return $this;}
 
+}
+
+class GPanels extends __base_widgets {
+  private $listItems = [];
+  private $_activeItem = 0;
+  function __construct() {
+    $this->addClass('GPanels')->append([
+      'div#[header].GPanels-header',
+      'div#[wrap_childs].GPanels-body'
+    ]);
+    $this->wrap_childs = v('wrap_childs');
+    $this->header = v('header');
+    $this->name('GPanels');
+  }
+  function indexActive($key) {$this->_activeItem = $key < 0 ? 0 : $key; return $this;}
+  function addItem($item) {
+    foreach (func_get_args() as $key => $item) {
+        array_push($this->listItems,$item);
+        $this->wrap_childs->append($item);
+        $this->header->append($item->key);
+    }
+    return $this;
+  }
+  static function create() { return new GPanels(); }
+  static function item()
+  {
+    $item = new __base_key_panel();
+    $item->addClass('GPanels-item');
+    $item->key->addClass('GPanels-key');
+    $item->padding('padding');
+    return $item;
+  }
+  function datasource($data,$customData = null) {
+    $this->wrap_childs->emptyDom();
+    $this->header->emptyDom();
+    $this->listItems = [];
+    if (is_array($customData)) foreach ($customData as $k => $v) { if (isset($data[$k])) $data[$v] = $data[$k];}
+
+    foreach ($data as $k => $item) {
+      $__i = $this::item();
+      if (isset($item['key'])) $__i->key($item['key']);
+      if (isset($item['panel'])) $__i->panel($item['panel']);
+      $this->addItem($__i);
+    }
+    return $this;
+  }
+  function preRender(){
+    $num_items = count($this->listItems);
+    $this->_activeItem = $this->_activeItem <= $num_items - 1 ? $this->_activeItem : 0;
+    if ($num_items) {
+      $this->listItems[$this->_activeItem]->addClass('GPanels-panel__active');
+      $this->listItems[$this->_activeItem]->key->addClass('GPanels-key__active');
+    }
+  }
 }
 
 

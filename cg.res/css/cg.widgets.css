@@ -1,490 +1,784 @@
 [cg_border="border"] {
-  border: 1px solid #efefef; }
+  border: 1px solid #efefef;
+}
 
 [cg_border="shadow-s"] {
   -webkit-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2);
+}
 
 [cg_border="shadow"] {
   -webkit-box-shadow: 0 2px 6px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 2px 6px 0px rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 2px 6px 0px rgba(0, 0, 0, 0.2);
+}
 
 [cg_border="no-border"] {
   -webkit-box-shadow: none;
   box-shadow: none;
-  border: 0; }
+  border: 0;
+}
+
+[cg_padding="padding"] {
+  padding: 20px;
+}
+
+[cg_padding="padding-s"] {
+  padding: 10px;
+}
+
+[cg_padding="padding-m"] {
+  padding: 1rem;
+}
+
+[cg_padding="no-padding"] {
+  padding: 0;
+}
 
 .cg-widgets_styles-orange {
-  font-family: Calibri; }
-  .cg-widgets_styles-orange .CardView_icon {
-    position: relative;
-    width: 400px;
-    height: 200px;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box; }
-    .cg-widgets_styles-orange .CardView_icon .CardView_icon_content {
-      position: relative;
-      width: 100%;
-      height: 200px; }
-      .cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description {
-        width: calc(100% - 200px);
-        background: #f0f0f0;
-        float: left;
-        height: 200px;
-        overflow: hidden;
-        position: relative; }
-        .cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description .CardView_icon-w_title {
-          width: 100%; }
-          .cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description .CardView_icon-w_title .CardView_icon-title {
-            width: 100%;
-            display: block;
-            padding: 20px 0 0 10px;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-            position: relative;
-            font-size: 20px; }
-            .cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description .CardView_icon-w_title .CardView_icon-title::before {
-              line-height: normal;
-              display: block;
-              float: left;
-              padding-right: 10px;
-              margin-top: 2px; }
-            .cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description .CardView_icon-w_title .CardView_icon-title::after {
-              display: block;
-              content: " ";
-              background: #eaab23;
-              height: 1px;
-              position: absolute;
-              width: 100%;
-              left: 10px;
-              bottom: 0px; }
-          .cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description .CardView_icon-w_title .CardView_icon-subtitle {
-            padding: 0 0 0 10px;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-            display: block;
-            font-weight: lighter; }
-        .cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description .CardView_icon-description {
-          padding: 10px 10px 0;
-          -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-          font-size: 14px; }
-        .cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description .CardView_icon-link_1 {
-          background: #eaab23;
-          position: absolute;
-          display: block;
-          width: calc(100% - 10px);
-          height: 40px;
-          bottom: 10px;
-          right: 0; }
-          .cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description .CardView_icon-link_1 .CardView_icon-_link_1_icon {
-            display: block;
-            float: right; }
-            .cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description .CardView_icon-link_1 .CardView_icon-_link_1_icon::before {
-              display: block;
-              height: 40px;
-              width: 40px;
-              text-align: center;
-              line-height: 40px;
-              color: white;
-              font-size: 24px; }
-          .cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description .CardView_icon-link_1 .CardView_icon-link_1_title {
-            display: block;
-            padding-left: 10px;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-            width: calc(100% - 40px);
-            line-height: 40px;
-            float: left;
-            color: white; }
-      .cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_illustration {
-        background: white;
-        float: right;
-        width: 200px;
-        height: 200px;
-        text-decoration: none; }
-        .cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_illustration .CardView_icon-icon {
-          display: block;
-          width: 100%;
-          height: 100%; }
-          .cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_illustration .CardView_icon-icon:hover::before {
-            -webkit-transform: scale(1.1, 1.1);
-            -ms-transform: scale(1.1, 1.1);
-            transform: scale(1.1, 1.1);
-            text-shadow: 25px 25px 0px rgba(0, 0, 0, 0.1); }
-          .cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_illustration .CardView_icon-icon::before {
-            -webkit-transition: all .2s linear;
-            -o-transition: all .2s linear;
-            transition: all .2s linear;
-            display: block;
-            line-height: 200px;
-            text-align: center;
-            font-size: 120px;
-            color: #eaab23;
-            text-shadow: 10px 10px 0px rgba(0, 0, 0, 0.1); }
-  .cg-widgets_styles-orange .Label_icon {
-    height: 62px;
-    width: 100%;
-    padding: 1px 0;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    position: relative; }
-    .cg-widgets_styles-orange .Label_icon .Label_icon_content {
-      width: 100%;
-      height: 60px;
-      position: relative; }
-      .cg-widgets_styles-orange .Label_icon .Label_icon_content .Label_icon-banda {
-        position: absolute;
-        top: 8.333px;
-        left: 7px;
-        width: 6px;
-        height: 6px;
-        background: #eaab23;
-        border-radius: 50%; }
-        .cg-widgets_styles-orange .Label_icon .Label_icon_content .Label_icon-banda:before {
-          position: absolute;
-          top: 16.666px;
-          left: 0px;
-          display: block;
-          content: " ";
-          width: 6px;
-          height: 6px;
-          background: #eaab23;
-          border-radius: 50%; }
-        .cg-widgets_styles-orange .Label_icon .Label_icon_content .Label_icon-banda:after {
-          position: absolute;
-          top: 33.333px;
-          left: 0px;
-          display: block;
-          content: " ";
-          width: 6px;
-          height: 6px;
-          background: #eaab23;
-          border-radius: 50%; }
-      .cg-widgets_styles-orange .Label_icon .Label_icon_content .Label_icon-icon {
-        position: relative;
-        float: left;
-        margin: 5px 0 5px 20px;
-        width: 50px;
-        height: 50px;
-        display: block;
-        border-left: 1px solid #efefef; }
-        .cg-widgets_styles-orange .Label_icon .Label_icon_content .Label_icon-icon::before {
-          font-size: 30px;
-          width: 50px;
-          text-align: center;
-          color: #e6e6e6;
-          line-height: 50px; }
-      .cg-widgets_styles-orange .Label_icon .Label_icon_content .Label_icon-w_description {
-        width: calc(100% - 72px);
-        float: right;
-        height: 60px; }
-        .cg-widgets_styles-orange .Label_icon .Label_icon_content .Label_icon-w_description .Label_icon-title {
-          display: block;
-          padding: 5px 0 0 0;
-          height: 20px;
-          font-weight: bold; }
-        .cg-widgets_styles-orange .Label_icon .Label_icon_content .Label_icon-w_description .Label_icon-description {
-          display: block;
-          padding: 0 0 5px 0;
-          font-size: 14px; }
-  .cg-widgets_styles-orange .ListILink {
-    width: 100%;
-    position: relative;
-    -webkit-transition: 0.2s linear all;
-    -o-transition: 0.2s linear all;
-    transition: 0.2s linear all; }
-    .cg-widgets_styles-orange .ListILink .ListILink_content {
-      padding-bottom: 10px; }
-    .cg-widgets_styles-orange .ListILink .ListILink-header {
-      height: 46px;
-      display: block;
-      overflow: hidden; }
-      .cg-widgets_styles-orange .ListILink .ListILink-header .ListILink-icon {
-        float: left;
-        height: 48px;
-        width: 58px;
-        position: relative;
-        color: transparent;
-        -webkit-transition: .2s linear all;
-        -o-transition: .2s linear all;
-        transition: .2s linear all;
-        margin-left: -40px; }
-        .cg-widgets_styles-orange .ListILink .ListILink-header .ListILink-icon::before {
-          display: block;
-          width: 40px;
-          height: 100%;
-          line-height: 48px;
-          font-size: 22px;
-          padding-left: 18px; }
-      .cg-widgets_styles-orange .ListILink .ListILink-header .ListILink-title {
-        height: 46px;
-        line-height: 46px;
-        text-transform: uppercase;
-        font-size: 18px; }
-      .cg-widgets_styles-orange .ListILink .ListILink-header .ListILink-toggle_show {
-        float: right;
-        display: block;
-        height: 46px;
-        width: 30px;
-        position: relative;
-        color: gray;
-        -webkit-transition: .2s linear all;
-        -o-transition: .2s linear all;
-        transition: .2s linear all;
-        border: 0;
-        background: transparent;
-        padding: 0;
-        outline: none;
-        cursor: pointer; }
-        .cg-widgets_styles-orange .ListILink .ListILink-header .ListILink-toggle_show::before {
-          display: block;
-          width: 100%;
-          height: 100%;
-          line-height: 46px;
-          font-size: 22px; }
-        .cg-widgets_styles-orange .ListILink .ListILink-header .ListILink-toggle_show:hover {
-          color: #eaab23; }
-    .cg-widgets_styles-orange .ListILink .ListILink-item {
-      display: block;
-      height: 40px;
-      position: relative;
-      text-decoration: none;
-      color: black;
-      width: 100%;
-      overflow: hidden; }
-      .cg-widgets_styles-orange .ListILink .ListILink-item .ListILink-item-icon {
-        float: left;
-        height: 40px;
-        width: 58px;
-        position: relative;
-        color: gray;
-        -webkit-transition: .2s linear all;
-        -o-transition: .2s linear all;
-        transition: .2s linear all;
-        z-index: 2; }
-        .cg-widgets_styles-orange .ListILink .ListILink-item .ListILink-item-icon::before {
-          display: block;
-          width: 40px;
-          height: 100%;
-          line-height: 40px;
-          font-size: 22px;
-          padding-left: 18px; }
-      .cg-widgets_styles-orange .ListILink .ListILink-item .ListILink-item-title {
-        height: 40px;
-        line-height: 40px;
-        text-transform: capitalize;
-        font-weight: lighter;
-        font-size: 18px;
-        display: block;
-        z-index: 1;
-        position: absolute;
-        left: 58px;
-        overflow: hidden;
-        -webkit-transition: .2s linear all;
-        -o-transition: .2s linear all;
-        transition: .2s linear all; }
-      .cg-widgets_styles-orange .ListILink .ListILink-item:hover .ListILink-item-icon {
-        color: #eaab23; }
-  .cg-widgets_styles-orange .ListILink__hidden .ListILink_content {
-    padding-bottom: 0; }
-  .cg-widgets_styles-orange .ListILink__hidden .ListILink-header .ListILink-icon {
-    margin-left: 0;
-    color: gray; }
-  .cg-widgets_styles-orange .ListILink__hidden:hover .ListILink-header .ListILink-icon {
-    color: #eaab23; }
-  .cg-widgets_styles-orange .ListILink__hiddenHeader .ListILink-header {
-    display: none; }
-  .cg-widgets_styles-orange .ListILink__hiddenHeader .ListILink_content {
-    padding-bottom: 0; }
-  .cg-widgets_styles-orange .ListILink__hiddenHeader .ListILink-item {
-    height: 46px; }
-    .cg-widgets_styles-orange .ListILink__hiddenHeader .ListILink-item .ListILink-item-icon {
-      height: 46px; }
-      .cg-widgets_styles-orange .ListILink__hiddenHeader .ListILink-item .ListILink-item-icon::before {
-        width: 46px;
-        line-height: 46px; }
-    .cg-widgets_styles-orange .ListILink__hiddenHeader .ListILink-item .ListILink-item-title {
-      height: 46px;
-      line-height: 46px;
-      text-transform: uppercase;
-      font-weight: normal; }
-  .cg-widgets_styles-orange .ListILink__iconMode {
-    width: 58px; }
-    .cg-widgets_styles-orange .ListILink__iconMode .ListILink-header .ListILink-icon {
-      cursor: pointer;
-      margin: 0;
-      color: #cbcbcb; }
-    .cg-widgets_styles-orange .ListILink__iconMode .ListILink-header .ListILink-title {
-      display: none; }
-    .cg-widgets_styles-orange .ListILink__iconMode .ListILink-header .ListILink-toggle_show {
-      display: none; }
-  .cg-widgets_styles-orange .SimpleList {
-    position: relative;
-    background: white; }
-    .cg-widgets_styles-orange .SimpleList .SimpleList_content {
-      position: relative; }
-    .cg-widgets_styles-orange .SimpleList .SimpleList-header {
-      display: block;
-      height: 50px;
-      text-align: left;
-      position: relative;
-      overflow: hidden; }
-      .cg-widgets_styles-orange .SimpleList .SimpleList-header::after {
-        content: "";
-        display: block;
-        width: calc(100% - 50px);
-        height: 1px;
-        background: #eaab23;
-        position: absolute;
-        bottom: 1;
-        right: 0; }
-      .cg-widgets_styles-orange .SimpleList .SimpleList-header .SimpleList-icon {
-        display: block;
-        float: left;
-        height: 100%;
-        width: 50px;
-        font-size: 22px; }
-        .cg-widgets_styles-orange .SimpleList .SimpleList-header .SimpleList-icon::before {
-          width: 100%;
-          height: 100%;
-          display: block;
-          text-align: center;
-          line-height: 50px; }
-      .cg-widgets_styles-orange .SimpleList .SimpleList-header .SimpleList-title {
-        line-height: 50px;
-        font-size: 18px;
-        text-transform: uppercase; }
-    .cg-widgets_styles-orange .SimpleList .SimpleList-body {
-      padding: 20px 0; }
-    .cg-widgets_styles-orange .SimpleList .SimpleList-item {
-      display: block;
-      height: 40px;
-      text-decoration: none;
-      color: #3c3c3c;
-      text-align: left;
-      position: relative;
-      -webkit-transition: .2s linear all;
-      -o-transition: .2s linear all;
-      transition: .2s linear all; }
-      .cg-widgets_styles-orange .SimpleList .SimpleList-item:link {
-        color: #936500; }
-        .cg-widgets_styles-orange .SimpleList .SimpleList-item:link:hover {
-          background: #efefef; }
-      .cg-widgets_styles-orange .SimpleList .SimpleList-item .SimpleList-item-icon {
-        display: block;
-        float: left;
-        height: 100%;
-        width: 50px;
-        font-size: 14px; }
-        .cg-widgets_styles-orange .SimpleList .SimpleList-item .SimpleList-item-icon::before {
-          width: 100%;
-          height: 100%;
-          display: block;
-          text-align: center;
-          line-height: 40px; }
-      .cg-widgets_styles-orange .SimpleList .SimpleList-item .SimpleList-item-title {
-        overflow: hidden;
-        line-height: 40px;
-        font-size: 18px;
-        font-weight: lighter;
-        display: inline-block;
-        height: 40px;
-        width: calc(100% - 51px);
-        white-space: nowrap;
-        -o-text-overflow: ellipsis;
-        text-overflow: ellipsis; }
-  .cg-widgets_styles-orange .SimpleButton {
-    display: inline-block;
-    height: 40px;
-    padding: 0 20px;
-    text-decoration: none;
-    position: relative;
-    text-align: center;
-    color: black;
-    -webkit-transition: .2s linear all;
-    -o-transition: .2s linear all;
-    transition: .2s linear all;
-    overflow: hidden; }
-    .cg-widgets_styles-orange .SimpleButton::before {
-      content: " ";
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #eaab23;
-      -webkit-transition: .2s linear all;
-      -o-transition: .2s linear all;
-      transition: .2s linear all; }
-    .cg-widgets_styles-orange .SimpleButton:hover {
-      color: white; }
-      .cg-widgets_styles-orange .SimpleButton:hover::before {
-        top: 0; }
-    .cg-widgets_styles-orange .SimpleButton .SimpleButton-title {
-      line-height: 40px;
-      display: inline-block;
-      position: relative; }
-    .cg-widgets_styles-orange .SimpleButton .SimpleButton-icon {
-      float: right;
-      height: 40px;
-      font-size: 18px;
-      padding: 0 0 0 10px;
-      position: relative; }
-      .cg-widgets_styles-orange .SimpleButton .SimpleButton-icon::before {
-        display: block;
-        line-height: 40px; }
-  .cg-widgets_styles-orange .MiniList .MiniList-header {
-    font-size: 18px;
-    height: 40px;
-    display: block;
-    line-height: 40px;
-    white-space: nowrap;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-    padding: 0 10px; }
-  .cg-widgets_styles-orange .MiniList .MiniList-body {
-    padding: 0 2px 10px 2px;
-    overflow: hidden; }
-  .cg-widgets_styles-orange .MiniList .MiniList-item {
-    padding: 4px 0;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box; }
-    .cg-widgets_styles-orange .MiniList .MiniList-item .MiniList-item_content {
-      display: block;
-      overflow: hidden;
-      position: relative; }
-      .cg-widgets_styles-orange .MiniList .MiniList-item .MiniList-item_content > div {
-        position: relative;
-        width: calc(100% - 31px);
-        float: right; }
-        .cg-widgets_styles-orange .MiniList .MiniList-item .MiniList-item_content > div .MiniList-item-title {
-          display: block;
-          font-size: 16px;
-          font-weight: lighter;
-          height: 30px;
-          line-height: 30px;
-          text-align: left;
-          padding: 10px 10px 0 0;
-          position: relative;
-          overflow: hidden;
-          white-space: nowrap;
-          -o-text-overflow: ellipsis;
-          text-overflow: ellipsis; }
-        .cg-widgets_styles-orange .MiniList .MiniList-item .MiniList-item_content > div .MiniList-item-description {
-          font-size: 14px;
-          display: block;
-          padding: 0 10px 10px 0; }
-      .cg-widgets_styles-orange .MiniList .MiniList-item .MiniList-item_content .MiniList-item-icon {
-        float: left;
-        height: 30px;
-        width: 30px;
-        display: block;
-        padding-top: 10px; }
-        .cg-widgets_styles-orange .MiniList .MiniList-item .MiniList-item_content .MiniList-item-icon::before {
-          display: block;
-          width: 100%;
-          height: 100%;
-          line-height: 30px;
-          text-align: center; }
+  font-family: Calibri;
+}
+
+.cg-widgets_styles-orange .CardView_icon {
+  position: relative;
+  width: 400px;
+  height: 200px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.cg-widgets_styles-orange .CardView_icon .CardView_icon_content {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description {
+  width: -webkit-calc(100% - 200px);
+  width: -moz-calc(100% - 200px);
+  width: calc(100% - 200px);
+  background: #f0f0f0;
+  float: left;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description .CardView_icon-w_title {
+  width: 100%;
+}
+
+.cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description .CardView_icon-w_title .CardView_icon-title {
+  width: 100%;
+  display: block;
+  padding: 20px 0 0 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  font-size: 20px;
+}
+
+.cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description .CardView_icon-w_title .CardView_icon-title::before {
+  line-height: normal;
+  display: block;
+  float: left;
+  padding-right: 10px;
+  margin-top: 2px;
+}
+
+.cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description .CardView_icon-w_title .CardView_icon-title::after {
+  display: block;
+  content: " ";
+  background: #eaab23;
+  height: 1px;
+  position: absolute;
+  width: 100%;
+  left: 10px;
+  bottom: 0px;
+}
+
+.cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description .CardView_icon-w_title .CardView_icon-subtitle {
+  padding: 0 0 0 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  font-weight: lighter;
+}
+
+.cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description .CardView_icon-description {
+  padding: 10px 10px 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description .CardView_icon-link_1 {
+  background: #eaab23;
+  position: absolute;
+  display: block;
+  width: -webkit-calc(100% - 10px);
+  width: -moz-calc(100% - 10px);
+  width: calc(100% - 10px);
+  height: 40px;
+  bottom: 10px;
+  right: 0;
+}
+
+.cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description .CardView_icon-link_1 .CardView_icon-_link_1_icon {
+  display: block;
+  float: right;
+}
+
+.cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description .CardView_icon-link_1 .CardView_icon-_link_1_icon::before {
+  display: block;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  line-height: 40px;
+  color: white;
+  font-size: 24px;
+}
+
+.cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_description .CardView_icon-link_1 .CardView_icon-link_1_title {
+  display: block;
+  padding-left: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: -webkit-calc(100% - 40px);
+  width: -moz-calc(100% - 40px);
+  width: calc(100% - 40px);
+  line-height: 40px;
+  float: left;
+  color: white;
+}
+
+.cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_illustration {
+  background: white;
+  float: right;
+  width: 200px;
+  height: 200px;
+  text-decoration: none;
+}
+
+.cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_illustration .CardView_icon-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_illustration .CardView_icon-icon:hover::before {
+  -webkit-transform: scale(1.1, 1.1);
+  -moz-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
+  -o-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
+  text-shadow: 25px 25px 0px rgba(0, 0, 0, 0.1);
+}
+
+.cg-widgets_styles-orange .CardView_icon .CardView_icon_content .CardView_icon-w_illustration .CardView_icon-icon::before {
+  -webkit-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  transition: all .2s linear;
+  display: block;
+  line-height: 200px;
+  text-align: center;
+  font-size: 120px;
+  color: #eaab23;
+  text-shadow: 10px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.cg-widgets_styles-orange .Label_icon {
+  height: 62px;
+  width: 100%;
+  padding: 1px 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.cg-widgets_styles-orange .Label_icon .Label_icon_content {
+  width: 100%;
+  height: 60px;
+  position: relative;
+}
+
+.cg-widgets_styles-orange .Label_icon .Label_icon_content .Label_icon-banda {
+  position: absolute;
+  top: 8.333px;
+  left: 7px;
+  width: 6px;
+  height: 6px;
+  background: #eaab23;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.cg-widgets_styles-orange .Label_icon .Label_icon_content .Label_icon-banda:before {
+  position: absolute;
+  top: 16.666px;
+  left: 0px;
+  display: block;
+  content: " ";
+  width: 6px;
+  height: 6px;
+  background: #eaab23;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.cg-widgets_styles-orange .Label_icon .Label_icon_content .Label_icon-banda:after {
+  position: absolute;
+  top: 33.333px;
+  left: 0px;
+  display: block;
+  content: " ";
+  width: 6px;
+  height: 6px;
+  background: #eaab23;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.cg-widgets_styles-orange .Label_icon .Label_icon_content .Label_icon-icon {
+  position: relative;
+  float: left;
+  margin: 5px 0 5px 20px;
+  width: 50px;
+  height: 50px;
+  display: block;
+  border-left: 1px solid #efefef;
+}
+
+.cg-widgets_styles-orange .Label_icon .Label_icon_content .Label_icon-icon::before {
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  color: #e6e6e6;
+  line-height: 50px;
+}
+
+.cg-widgets_styles-orange .Label_icon .Label_icon_content .Label_icon-w_description {
+  width: -webkit-calc(100% - 72px);
+  width: -moz-calc(100% - 72px);
+  width: calc(100% - 72px);
+  float: right;
+  height: 60px;
+}
+
+.cg-widgets_styles-orange .Label_icon .Label_icon_content .Label_icon-w_description .Label_icon-title {
+  display: block;
+  padding: 5px 0 0 0;
+  height: 20px;
+  font-weight: bold;
+}
+
+.cg-widgets_styles-orange .Label_icon .Label_icon_content .Label_icon-w_description .Label_icon-description {
+  display: block;
+  padding: 0 0 5px 0;
+  font-size: 14px;
+}
+
+.cg-widgets_styles-orange .ListILink {
+  width: 100%;
+  position: relative;
+  -webkit-transition: 0.2s linear all;
+  -o-transition: 0.2s linear all;
+  -moz-transition: 0.2s linear all;
+  transition: 0.2s linear all;
+}
+
+.cg-widgets_styles-orange .ListILink .ListILink_content {
+  padding-bottom: 10px;
+}
+
+.cg-widgets_styles-orange .ListILink .ListILink-header {
+  height: 46px;
+  display: block;
+  overflow: hidden;
+}
+
+.cg-widgets_styles-orange .ListILink .ListILink-header .ListILink-icon {
+  float: left;
+  height: 48px;
+  width: 58px;
+  position: relative;
+  color: transparent;
+  -webkit-transition: .2s linear all;
+  -o-transition: .2s linear all;
+  -moz-transition: .2s linear all;
+  transition: .2s linear all;
+  margin-left: -40px;
+}
+
+.cg-widgets_styles-orange .ListILink .ListILink-header .ListILink-icon::before {
+  display: block;
+  width: 40px;
+  height: 100%;
+  line-height: 48px;
+  font-size: 22px;
+  padding-left: 18px;
+}
+
+.cg-widgets_styles-orange .ListILink .ListILink-header .ListILink-title {
+  height: 46px;
+  line-height: 46px;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.cg-widgets_styles-orange .ListILink .ListILink-header .ListILink-toggle_show {
+  float: right;
+  display: block;
+  height: 46px;
+  width: 30px;
+  position: relative;
+  color: gray;
+  -webkit-transition: .2s linear all;
+  -o-transition: .2s linear all;
+  -moz-transition: .2s linear all;
+  transition: .2s linear all;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.cg-widgets_styles-orange .ListILink .ListILink-header .ListILink-toggle_show::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 46px;
+  font-size: 22px;
+}
+
+.cg-widgets_styles-orange .ListILink .ListILink-header .ListILink-toggle_show:hover {
+  color: #eaab23;
+}
+
+.cg-widgets_styles-orange .ListILink .ListILink-item {
+  display: block;
+  height: 40px;
+  position: relative;
+  text-decoration: none;
+  color: black;
+  width: 100%;
+  overflow: hidden;
+}
+
+.cg-widgets_styles-orange .ListILink .ListILink-item .ListILink-item-icon {
+  float: left;
+  height: 40px;
+  width: 58px;
+  position: relative;
+  color: gray;
+  -webkit-transition: .2s linear all;
+  -o-transition: .2s linear all;
+  -moz-transition: .2s linear all;
+  transition: .2s linear all;
+  z-index: 2;
+}
+
+.cg-widgets_styles-orange .ListILink .ListILink-item .ListILink-item-icon::before {
+  display: block;
+  width: 40px;
+  height: 100%;
+  line-height: 40px;
+  font-size: 22px;
+  padding-left: 18px;
+}
+
+.cg-widgets_styles-orange .ListILink .ListILink-item .ListILink-item-title {
+  height: 40px;
+  line-height: 40px;
+  text-transform: capitalize;
+  font-weight: lighter;
+  font-size: 18px;
+  display: block;
+  z-index: 1;
+  position: absolute;
+  left: 58px;
+  overflow: hidden;
+  -webkit-transition: .2s linear all;
+  -o-transition: .2s linear all;
+  -moz-transition: .2s linear all;
+  transition: .2s linear all;
+}
+
+.cg-widgets_styles-orange .ListILink .ListILink-item:hover .ListILink-item-icon {
+  color: #eaab23;
+}
+
+.cg-widgets_styles-orange .ListILink__hidden .ListILink_content {
+  padding-bottom: 0;
+}
+
+.cg-widgets_styles-orange .ListILink__hidden .ListILink-header .ListILink-icon {
+  margin-left: 0;
+  color: gray;
+}
+
+.cg-widgets_styles-orange .ListILink__hidden:hover .ListILink-header .ListILink-icon {
+  color: #eaab23;
+}
+
+.cg-widgets_styles-orange .ListILink__hiddenHeader .ListILink-header {
+  display: none;
+}
+
+.cg-widgets_styles-orange .ListILink__hiddenHeader .ListILink_content {
+  padding-bottom: 0;
+}
+
+.cg-widgets_styles-orange .ListILink__hiddenHeader .ListILink-item {
+  height: 46px;
+}
+
+.cg-widgets_styles-orange .ListILink__hiddenHeader .ListILink-item .ListILink-item-icon {
+  height: 46px;
+}
+
+.cg-widgets_styles-orange .ListILink__hiddenHeader .ListILink-item .ListILink-item-icon::before {
+  width: 46px;
+  line-height: 46px;
+}
+
+.cg-widgets_styles-orange .ListILink__hiddenHeader .ListILink-item .ListILink-item-title {
+  height: 46px;
+  line-height: 46px;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+.cg-widgets_styles-orange .ListILink__iconMode {
+  width: 58px;
+}
+
+.cg-widgets_styles-orange .ListILink__iconMode .ListILink-header .ListILink-icon {
+  cursor: pointer;
+  margin: 0;
+  color: #cbcbcb;
+}
+
+.cg-widgets_styles-orange .ListILink__iconMode .ListILink-header .ListILink-title {
+  display: none;
+}
+
+.cg-widgets_styles-orange .ListILink__iconMode .ListILink-header .ListILink-toggle_show {
+  display: none;
+}
+
+.cg-widgets_styles-orange .SimpleList {
+  position: relative;
+  background: white;
+}
+
+.cg-widgets_styles-orange .SimpleList .SimpleList_content {
+  position: relative;
+}
+
+.cg-widgets_styles-orange .SimpleList .SimpleList-header {
+  display: block;
+  height: 50px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.cg-widgets_styles-orange .SimpleList .SimpleList-header::after {
+  content: "";
+  display: block;
+  width: -webkit-calc(100% - 50px);
+  width: -moz-calc(100% - 50px);
+  width: calc(100% - 50px);
+  height: 1px;
+  background: #eaab23;
+  position: absolute;
+  bottom: 1;
+  right: 0;
+}
+
+.cg-widgets_styles-orange .SimpleList .SimpleList-header .SimpleList-icon {
+  display: block;
+  float: left;
+  height: 100%;
+  width: 50px;
+  font-size: 22px;
+}
+
+.cg-widgets_styles-orange .SimpleList .SimpleList-header .SimpleList-icon::before {
+  width: 100%;
+  height: 100%;
+  display: block;
+  text-align: center;
+  line-height: 50px;
+}
+
+.cg-widgets_styles-orange .SimpleList .SimpleList-header .SimpleList-title {
+  line-height: 50px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.cg-widgets_styles-orange .SimpleList .SimpleList-body {
+  padding: 20px 0;
+}
+
+.cg-widgets_styles-orange .SimpleList .SimpleList-item {
+  display: block;
+  height: 40px;
+  text-decoration: none;
+  color: #3c3c3c;
+  text-align: left;
+  position: relative;
+  -webkit-transition: .2s linear all;
+  -o-transition: .2s linear all;
+  -moz-transition: .2s linear all;
+  transition: .2s linear all;
+}
+
+.cg-widgets_styles-orange .SimpleList .SimpleList-item:link {
+  color: #936500;
+}
+
+.cg-widgets_styles-orange .SimpleList .SimpleList-item:link:hover {
+  background: #efefef;
+}
+
+.cg-widgets_styles-orange .SimpleList .SimpleList-item .SimpleList-item-icon {
+  display: block;
+  float: left;
+  height: 100%;
+  width: 50px;
+  font-size: 14px;
+}
+
+.cg-widgets_styles-orange .SimpleList .SimpleList-item .SimpleList-item-icon::before {
+  width: 100%;
+  height: 100%;
+  display: block;
+  text-align: center;
+  line-height: 40px;
+}
+
+.cg-widgets_styles-orange .SimpleList .SimpleList-item .SimpleList-item-title {
+  overflow: hidden;
+  line-height: 40px;
+  font-size: 18px;
+  font-weight: lighter;
+  display: inline-block;
+  height: 40px;
+  width: -webkit-calc(100% - 51px);
+  width: -moz-calc(100% - 51px);
+  width: calc(100% - 51px);
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+.cg-widgets_styles-orange .SimpleButton {
+  display: inline-block;
+  height: 40px;
+  padding: 0 20px;
+  text-decoration: none;
+  position: relative;
+  text-align: center;
+  color: black;
+  -webkit-transition: .2s linear all;
+  -o-transition: .2s linear all;
+  -moz-transition: .2s linear all;
+  transition: .2s linear all;
+  overflow: hidden;
+}
+
+.cg-widgets_styles-orange .SimpleButton::before {
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #eaab23;
+  -webkit-transition: .2s linear all;
+  -o-transition: .2s linear all;
+  -moz-transition: .2s linear all;
+  transition: .2s linear all;
+}
+
+.cg-widgets_styles-orange .SimpleButton:hover {
+  color: white;
+}
+
+.cg-widgets_styles-orange .SimpleButton:hover::before {
+  top: 0;
+}
+
+.cg-widgets_styles-orange .SimpleButton .SimpleButton-title {
+  line-height: 40px;
+  display: inline-block;
+  position: relative;
+}
+
+.cg-widgets_styles-orange .SimpleButton .SimpleButton-icon {
+  float: right;
+  height: 40px;
+  font-size: 18px;
+  padding: 0 0 0 10px;
+  position: relative;
+}
+
+.cg-widgets_styles-orange .SimpleButton .SimpleButton-icon::before {
+  display: block;
+  line-height: 40px;
+}
+
+.cg-widgets_styles-orange .MiniList .MiniList-header {
+  font-size: 18px;
+  height: 40px;
+  display: block;
+  line-height: 40px;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  padding: 0 10px;
+}
+
+.cg-widgets_styles-orange .MiniList .MiniList-body {
+  padding: 0 2px 10px 2px;
+  overflow: hidden;
+}
+
+.cg-widgets_styles-orange .MiniList .MiniList-item {
+  padding: 4px 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.cg-widgets_styles-orange .MiniList .MiniList-item .MiniList-item_content {
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.cg-widgets_styles-orange .MiniList .MiniList-item .MiniList-item_content > div {
+  position: relative;
+  width: -webkit-calc(100% - 31px);
+  width: -moz-calc(100% - 31px);
+  width: calc(100% - 31px);
+  float: right;
+}
+
+.cg-widgets_styles-orange .MiniList .MiniList-item .MiniList-item_content > div .MiniList-item-title {
+  display: block;
+  font-size: 16px;
+  font-weight: lighter;
+  height: 30px;
+  line-height: 30px;
+  text-align: left;
+  padding: 10px 10px 0 0;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+.cg-widgets_styles-orange .MiniList .MiniList-item .MiniList-item_content > div .MiniList-item-description {
+  font-size: 14px;
+  display: block;
+  padding: 0 10px 10px 0;
+}
+
+.cg-widgets_styles-orange .MiniList .MiniList-item .MiniList-item_content .MiniList-item-icon {
+  float: left;
+  height: 30px;
+  width: 30px;
+  display: block;
+  padding-top: 10px;
+}
+
+.cg-widgets_styles-orange .MiniList .MiniList-item .MiniList-item_content .MiniList-item-icon::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 30px;
+  text-align: center;
+}
+
+.cg-widgets_styles-orange .GPanels {
+  background: white;
+}
+
+.cg-widgets_styles-orange .GPanels .GPanels-header {
+  overflow: hidden;
+  height: 50px;
+  border-bottom: 1px solid #cbcbcb;
+}
+
+.cg-widgets_styles-orange .GPanels .GPanels-header .GPanels-key {
+  float: left;
+  height: 50px;
+  padding: 0 10px;
+  line-height: 50px;
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  transition: all .2s linear;
+}
+
+.cg-widgets_styles-orange .GPanels .GPanels-header .GPanels-key:hover {
+  background: #efefef;
+}
+
+.cg-widgets_styles-orange .GPanels .GPanels-header .GPanels-key::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0;
+  content: "";
+  display: block;
+  width: 100%;
+  background: #eaab23;
+  -webkit-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  transition: all .2s linear;
+}
+
+.cg-widgets_styles-orange .GPanels .GPanels-header .GPanels-key__active::after {
+  height: 2px;
+}
+
+.cg-widgets_styles-orange .GPanels .GPanels-body {
+  position: relative;
+  overflow: hidden;
+}
+
+.cg-widgets_styles-orange .GPanels .GPanels-body .GPanels-item {
+  position: absolute;
+  opacity: 0;
+  -webkit-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  transition: all .2s linear;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.cg-widgets_styles-orange .GPanels .GPanels-body .GPanels-panel__active {
+  position: relative;
+  opacity: 1;
+  z-index: 1;
+}

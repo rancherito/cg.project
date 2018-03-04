@@ -443,8 +443,10 @@ class Dom{
     }
     return $this->attr("value");
   }
+  function preRender() {}
   function makeRender(){
     if ($this->generate && !$this->isRender) {
+      $this->preRender();
       $this->isRender = true;
       $outClass = "";
       foreach ($this->attr_list as $i => $attr) {

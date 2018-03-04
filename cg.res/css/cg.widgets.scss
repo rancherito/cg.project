@@ -14,6 +14,18 @@ $black-primary-color: #936500;
   box-shadow: none;
   border: 0;
 }
+[cg_padding="padding"]{
+  padding: 20px;
+}
+[cg_padding="padding-s"]{
+  padding: 10px;
+}
+[cg_padding="padding-m"]{
+  padding: 1rem;
+}
+[cg_padding="no-padding"]{
+  padding: 0;
+}
 
 .cg-widgets_styles-orange{
     font-family: Calibri;
@@ -561,4 +573,58 @@ $black-primary-color: #936500;
         }
       }
     }
+    .GPanels{
+      background: white;
+      .GPanels-header{
+        overflow: hidden;
+        height: 50px;
+        border-bottom: 1px solid #cbcbcb;
+        .GPanels-key{
+          float: left;
+          height: 50px;
+          padding: 0 10px;
+          line-height: 50px;
+          position: relative;
+          cursor: pointer;
+          transition: all .2s linear;
+          &:hover{
+            background: $ultra-light-color;
+          }
+          &::after{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 0;
+            content: "";
+            display: block;
+            width: 100%;
+            background: $primary-color;
+            transition: all .2s linear;
+          }
+        }
+        .GPanels-key__active{
+          &::after{
+            height: 2px;
+          }
+        }
+      }
+      .GPanels-body{
+        position: relative;
+        overflow: hidden;
+
+        .GPanels-item{
+          position: absolute;
+          opacity: 0;
+          transition: all .2s linear;
+          width: 100%;
+          box-sizing: border-box;
+        }
+        .GPanels-panel__active{
+          position: relative;
+          opacity: 1;
+          z-index: 1;
+        }
+      }
+    }
+
 }
