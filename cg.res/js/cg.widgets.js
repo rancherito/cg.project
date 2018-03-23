@@ -138,7 +138,7 @@ cg.widgets.GPanels = function GPanels(from) {
   for (var i = 0; i < preListItem_panel.length; i++) {
     var _item = new cg.widgets.GPanels.item([preListItem_panel[i],preListItem_key[i]]); addEvent(_item); listItems.push(_item);
   }
-
+  //if(!item_base.is("[cg_shadow]")) item_base.shadow('padding');
   return base;
 }
 cg.widgets.GPanels.item = function item(_item){
@@ -148,7 +148,7 @@ cg.widgets.GPanels.item = function item(_item){
     item_base.key = function(set){ item_base.Key.text(set); return item_base; }
     item_base.panel = function(set){ item_base.empty().append(set); return item_base; }
     item_base.padding = function(set){item_base.attr('cg_padding',set); return item_base;}
-    item_base.padding('padding');
+    if(!item_base.is("[cg_padding]")) item_base.padding('padding');
     return item_base;
 }
 
